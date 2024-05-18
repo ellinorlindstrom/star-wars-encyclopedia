@@ -2,6 +2,8 @@ import { Person } from "../types/People.types";
 import { useState } from "react";
 import axios from 'axios';
 import SearchForm from "../components/SearchForm";
+import PeopleCard from "../components/PeopleCard";
+import { Col, Container, Row } from "react-bootstrap";
 
 
 const People: React.FC = () => {
@@ -24,19 +26,21 @@ const People: React.FC = () => {
     };
 
     return (
-        <div>
+        <Container>
             <h1>People</h1>
             <SearchForm onSubmit={getPeople} placeholder='Search for a person' />
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             {people.length > 0 && (
-                <ul>
+                <Row>
                     {people.map((person, index) => (
-                        <li key={index}>{person.name}</li>
+                        <Col sm={12} md={6} lg={4} key={index} className="mb-4">
+                        <PeopleCard key={index} person={person} />
+                        </Col>
                     ))}
-                </ul>
+                </Row>
             )}
-        </div>
+        </Container>
     )  
 }
 

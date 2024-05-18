@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Planet } from '../types/Planets.types';
 import axios from 'axios';
 import SearchForm from '../components/SearchForm';
+import { Col, Container, Row } from 'react-bootstrap';
+import PlanetsCard from '../components/PlanetsCard';
 
 const Planets: React.FC = () => {
   const [error, setError] = useState<string | false>(false);
@@ -23,20 +25,22 @@ const Planets: React.FC = () => {
   };
 
   return (
-    <div>
+    <Container>
     <h1>Planets</h1>
     <SearchForm onSubmit={getPlanets} placeholder='Search for a planet' />
     {loading && <p>Loading...</p>}
     {error && <p>{error}</p>}
     {planets.length > 0 && (
-      <ul>
+      <Row>
         {planets.map((planet, index) => (
-          <li key={index}>{planet.name}</li>
+          <Col sm={12} md={6} lg={4} key={index} className="mb-4">
+            <PlanetsCard planet={planet} />
+          </Col>
         ))}
-      </ul>
+      </Row>
     )}
 
-    </div>
+    </Container>
   )
 }
 

@@ -3,6 +3,7 @@ import { Vehicle } from '../types/Vehicles.types';
 import axios from 'axios';
 import SearchForm from '../components/SearchForm';
 import { Col, Container, Row } from 'react-bootstrap';
+import VehiclesCard from '../components/VehiclesCard';
 
 const Vehicles: React.FC = () => {
     const [error, setError] = useState<string | false>(false);
@@ -33,7 +34,7 @@ const Vehicles: React.FC = () => {
                 <Row>
                     {vehicles.map((vehicle, index) => (
                       <Col sm={12} md={6} lg={4} key={index} className="mb-4">
-                        <li key={index}>{vehicle.name}</li>
+                        <VehiclesCard vehicle={vehicle} />
                         </Col>
                     ))}
                 </Row>
