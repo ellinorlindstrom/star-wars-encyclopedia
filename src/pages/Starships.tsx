@@ -1,26 +1,42 @@
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import React, { useState } from 'react';
+import { Starship } from '../types/Starships';
+import axios from 'axios';
+import SearchForm from '../components/Searchform';
 
+const Starships: React.FC = () => {
+    const [error, setError] = useState<string | false>(false);
+    const [starships, setStarships] = useState<Starship[]>([]);
+    const [loading, setLoading] = useState(false);
 
-function Starships() {
-  return (
-    <div>
-    <h1>Starships</h1>
-    <Form className='mb-4'>
-      <Form.Group className='mb-3'>
-        <Form.Label>Search</Form.Label>
-        <Form.Control type="text" placeholder="Search for a starship" />
-      </Form.Group>
-      <div className="d-flex justify-content-end">
-        <Button 
-          variant="success" 
-          type="submit">
-          Submit
-        </Button>
-      </div>
-    </Form>
-    </div>
-  )
-}
+    const getStarships = async (search: string) => {
+        try {
+            setError(false);
+            setLoading(true);
+            const response = await axios.get(`https://swapi.dev/api/starships/?search=${search}`);
+            const data = response.data;
+            setStarships(data.results);
+        } catch (error) {
+            setError('An error occurred');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div>
+            <h1>Starships</h1>
+            <SearchForm onSubmit={getStarships} placeholder='Search for a starship' />
+            {loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
+            {starships.length > 0 && (
+                <ul>
+                    {starships.map((starship, index) => (
+                        <li key={index}>{starship.name}</li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    );
+};
 
 export default Starships

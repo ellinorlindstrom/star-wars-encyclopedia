@@ -1,25 +1,43 @@
-import  Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
+import React, { useState } from 'react';
+import { SpeciesDetails } from '../types/Species';
+import axios from 'axios';
+import SearchForm from '../components/Searchform';
 
-function Species() {
-  return (
-    <div>
-      <h1>Species</h1>
-      <Form className='mb-4'>
-      <Form.Group className='mb-3'>
-          <Form.Label>Search</Form.Label>
-          <Form.Control type="text" placeholder="Search for a species" />
-        </Form.Group>
-        <div className="d-flex justify-content-end">
-        <Button 
-          variant="success" 
-          type="submit">
-          Submit
-        </Button>
-      </div>
-      </Form>
-    </div>
-  )
-}
+const Species: React.FC = () => {
+    const [error, setError] = useState<string | false>(false);
+    const [species, setSpecies] = useState<SpeciesDetails[]>([]);
+    const [loading, setLoading] = useState(false);
+
+    const getSpecies = async (search: string) => {
+        try {
+            setError(false);
+            setLoading(true);
+            const response = await axios.get(`https://swapi.dev/api/species/?search=${search}`);
+            const data = response.data;
+            setSpecies(data.results);
+        } catch (error) {
+            setError('An error occurred');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div>
+            <h1>Species</h1>
+            <SearchForm onSubmit={getSpecies} placeholder='Search for a species' />
+            {loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
+            {species.length > 0 && (
+                <ul>
+                    {species.map((species, index) => (
+                        <li key={index}>{species.name}</li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    );
+};
+
 
 export default Species

@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { Film } from '../types/Films';
 import axios from 'axios';
+import SearchForm from '../components/Searchform';
 
 const Films: React.FC = () => {
     const [error, setError] = useState<string | false>(false);
     const [films, setFilms] = useState<Film[]>([]);
     const [loading, setLoading] = useState(false);
-    const [search, setSearch] = useState('');
 
-    const getFilms = async () => {
+    const getFilms = async (search: string) => {
         try {
             setError(false);
             setLoading(true);
@@ -24,31 +22,10 @@ const Films: React.FC = () => {
         }
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log('Form submitted');
-        getFilms(); 
-    };
-
     return (
         <div>
             <h1>Films</h1>
-            <Form className='mb-4' onSubmit={handleSubmit}>
-                <Form.Group className='mb-3'>
-                    <Form.Label>Search</Form.Label>
-                    <Form.Control 
-                        onChange={(e) => setSearch(e.target.value)}
-                        type="text" 
-                        placeholder="Search for a film" />
-                </Form.Group>
-                    <div className="d-flex justify-content-end">
-                    <Button 
-                        variant="success" 
-                        type="submit">
-                        Submit
-                    </Button>
-                </div>
-            </Form>
+            <SearchForm onSubmit={getFilms} placeholder='Search for a film' />
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             {films.length > 0 && (
