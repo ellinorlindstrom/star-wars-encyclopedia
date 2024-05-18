@@ -1,7 +1,7 @@
-import { Person } from "../types/People";
+import { Person } from "../types/People.types";
 import { useState } from "react";
 import axios from 'axios';
-import SearchForm from "../components/Searchform";
+import SearchForm from "../components/SearchForm";
 
 
 const People: React.FC = () => {

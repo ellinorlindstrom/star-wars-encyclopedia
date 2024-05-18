@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { SpeciesDetails } from '../types/Species';
+import { SpeciesDetails } from '../types/Species.types';
 import axios from 'axios';
-import SearchForm from '../components/Searchform';
+import SearchForm from '../components/SearchForm';
 
 const Species: React.FC = () => {
     const [error, setError] = useState<string | false>(false);

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Vehicle } from '../types/Vehicles';
+import { Vehicle } from '../types/Vehicles.types';
 import axios from 'axios';
-import SearchForm from '../components/Searchform';
+import SearchForm from '../components/SearchForm';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Vehicles: React.FC = () => {
     const [error, setError] = useState<string | false>(false);
@@ -23,19 +24,21 @@ const Vehicles: React.FC = () => {
     };
 
     return (
-        <div>
+        <Container>
             <h1>Vehicles</h1>
             <SearchForm onSubmit={getVehicles} placeholder='Search for a vehicle' />
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             {vehicles.length > 0 && (
-                <ul>
+                <Row>
                     {vehicles.map((vehicle, index) => (
+                      <Col sm={12} md={6} lg={4} key={index} className="mb-4">
                         <li key={index}>{vehicle.name}</li>
+                        </Col>
                     ))}
-                </ul>
+                </Row>
             )}
-        </div>
+        </Container>
     );
 };
 

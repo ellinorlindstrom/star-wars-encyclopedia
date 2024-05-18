@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Film } from '../types/Films';
+import { Film } from '../types/Films.types';
 import axios from 'axios';
-import SearchForm from '../components/Searchform';
+import SearchForm from '../components/SearchForm';
+import FilmCard from '../components/FilmCard';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Films: React.FC = () => {
     const [error, setError] = useState<string | false>(false);
@@ -23,19 +25,19 @@ const Films: React.FC = () => {
     };
 
     return (
-        <div>
+        <Container>
             <h1>Films</h1>
-            <SearchForm onSubmit={getFilms} placeholder='Search for a film' />
+            <SearchForm onSubmit={getFilms} placeholder="Search for a film" />
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            {films.length > 0 && (
-                <ul>
-                    {films.map((film, index) => (
-                        <li key={index}>{film.title}</li>
-                    ))}
-                </ul>
-            )}
-        </div>
+            <Row>
+                {films.map((film, index) => (
+                    <Col sm={12} md={6} lg={4} key={index} className="mb-4">
+                        <FilmCard film={film} />
+                    </Col>
+                ))}
+            </Row>
+        </Container>
     );
 };
 

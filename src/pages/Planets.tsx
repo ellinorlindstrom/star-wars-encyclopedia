@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Planet } from '../types/Planets';
+import { Planet } from '../types/Planets.types';
 import axios from 'axios';
-import SearchForm from '../components/Searchform';
+import SearchForm from '../components/SearchForm';
 
 const Planets: React.FC = () => {
   const [error, setError] = useState<string | false>(false);

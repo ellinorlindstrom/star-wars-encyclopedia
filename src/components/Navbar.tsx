@@ -2,13 +2,15 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FC } from 'react';
 
-interface AppNavbarProps {
-    brand: string;
-}
+interface AppNavbarProps {}
 
 const AppNavbar: FC<AppNavbarProps> = () => {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar 
+      bg="dark" 
+      variant="dark"
+      expand="lg"
+      >
       <Container>
         <Navbar.Brand>Star Wars Encyclopedia</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

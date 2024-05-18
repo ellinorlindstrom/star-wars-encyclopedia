@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Starship } from '../types/Starships';
+import { Starship } from '../types/Starships.types';
 import axios from 'axios';
-import SearchForm from '../components/Searchform';
+import SearchForm from '../components/SearchForm';
 
 const Starships: React.FC = () => {
     const [error, setError] = useState<string | false>(false);

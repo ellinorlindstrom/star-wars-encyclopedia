@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <Router>
-      <AppNavbar brand="Star Wars Encyclopedia" />
+      <AppNavbar />
       <Container className="mt-4">
       <Routes>
         <Route path="/films" element={<Films/>} />
