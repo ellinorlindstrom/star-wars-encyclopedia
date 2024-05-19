@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Starship } from '../types/Starships.types';
-import axios from 'axios';
+import { apiService } from '../services/StarWarsAPI';
 import SearchForm from '../components/SearchForm';
 import { Col, Container, Row } from 'react-bootstrap';
 import StarshipsCard from '../components/StarshipsCard';
@@ -14,8 +14,7 @@ const Starships: React.FC = () => {
         try {
             setError(false);
             setLoading(true);
-            const response = await axios.get(`https://swapi.dev/api/starships/?search=${search}`);
-            const data = response.data;
+            const data = await apiService.getStarships(search);
             setStarships(data.results);
         } catch (error) {
             setError('An error occurred');

@@ -1,6 +1,6 @@
+import { apiService } from "../services/StarWarsAPI";
 import { Person } from "../types/People.types";
 import { useState } from "react";
-import axios from 'axios';
 import SearchForm from "../components/SearchForm";
 import PeopleCard from "../components/PeopleCard";
 import { Col, Container, Row } from "react-bootstrap";
@@ -15,8 +15,7 @@ const People: React.FC = () => {
         try {
             setError(false);
             setLoading(true);
-            const response = await axios.get(`https://swapi.dev/api/people/?search=${search}`);
-            const data = response.data;
+            const data = await apiService.getPeople(search);
             setPeople(data.results);
         } catch (error) {
             setError('An error occurred');

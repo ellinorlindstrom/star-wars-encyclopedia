@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SpeciesDetails } from '../types/Species.types';
-import axios from 'axios';
+import { apiService } from '../services/StarWarsAPI';
 import SearchForm from '../components/SearchForm';
 import { Col, Container, Row } from 'react-bootstrap';
 import SpeciesCard from '../components/SpeciesCard';
@@ -14,8 +14,7 @@ const Species: React.FC = () => {
         try {
             setError(false);
             setLoading(true);
-            const response = await axios.get(`https://swapi.dev/api/species/?search=${search}`);
-            const data = response.data;
+            const data = await apiService.getSpecies(search);
             setSpecies(data.results);
         } catch (error) {
             setError('An error occurred');

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Vehicle } from '../types/Vehicles.types';
-import axios from 'axios';
+import { apiService } from '../services/StarWarsAPI';
 import SearchForm from '../components/SearchForm';
 import { Col, Container, Row } from 'react-bootstrap';
 import VehiclesCard from '../components/VehiclesCard';
@@ -14,8 +14,7 @@ const Vehicles: React.FC = () => {
         try {
             setError(false);
             setLoading(true);
-            const response = await axios.get(`https://swapi.dev/api/vehicles/?search=${search}`);
-            const data = response.data;
+            const data = await apiService.getVehicles(search);
             setVehicles(data.results);
         } catch (error) {
             setError('An error occurred');

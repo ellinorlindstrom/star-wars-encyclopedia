@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Planet } from '../types/Planets.types';
-import axios from 'axios';
+import { apiService } from '../services/StarWarsAPI';
 import SearchForm from '../components/SearchForm';
 import { Col, Container, Row } from 'react-bootstrap';
 import PlanetsCard from '../components/PlanetsCard';
@@ -14,8 +14,7 @@ const Planets: React.FC = () => {
     try {
       setError(false);
       setLoading(true);
-      const response = await axios.get(`https://swapi.dev/api/planets/?search=${search}`);
-      const data = response.data;
+      const data = await apiService.getPlanets(search);
       setPlanets(data.results);
     } catch (error) {
       setError('An error occurred');

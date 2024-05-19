@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Film } from '../types/Films.types';
-import axios from 'axios';
 import SearchForm from '../components/SearchForm';
 import FilmCard from '../components/FilmCard';
 import { Col, Container, Row } from 'react-bootstrap';
+import { apiService } from '../services/StarWarsAPI';
 
 const Films: React.FC = () => {
     const [error, setError] = useState<string | false>(false);
@@ -14,8 +14,7 @@ const Films: React.FC = () => {
         try {
             setError(false);
             setLoading(true);
-            const response = await axios.get(`https://swapi.dev/api/films/?search=${search}`);
-            const data = response.data;
+            const data = await apiService.getFilms(search);
             setFilms(data.results);
         } catch (error) {
             setError('An error occurred');
