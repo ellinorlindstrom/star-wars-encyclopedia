@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "https://swapi.dev/api/",
-  timeout: 1000,
+  baseURL: "https://swapi.dev/api/"
 });
 
 const get = async (endpoint: string, params = {}) => {
@@ -16,10 +15,10 @@ const get = async (endpoint: string, params = {}) => {
 }
 
 export const apiService = {
-  getFilms: (search: string) => get("films/", { search }),
-  getPeople: (search: string) => get("people/", { search }),
-  getPlanets: (search: string) => get("planets/", { search }),
-  getSpecies: (search: string) => get("species/", { search }),
-  getStarships: (search: string) => get("starships/", { search }),
-  getVehicles: (search: string) => get("vehicles/", { search }),
+  getFilms: (search: string, page: number) => get("films/", { search, page }),
+  getPeople: (search: string, page: number) => get("people/", { search, page }),
+  getPlanets: (search: string, page: number) => get("planets/", { search, page }),
+  getSpecies: (search: string, page: number) => get("species/", { search, page }),
+  getStarships: (search: string, page: number) => get("starships/", { search, page }),
+  getVehicles: (search: string, page: number) => get("vehicles/", { search, page }),
 };
