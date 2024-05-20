@@ -5,14 +5,17 @@ import SearchForm from '../components/SearchForm';
 import { Col, Container, Row } from 'react-bootstrap';
 import StarshipsCard from '../components/StarshipsCard';
 import Pagination from '../components/Pagination';
+import useQueryParams from '../hooks/useQueryParams';
 
 const Starships: React.FC = () => {
     const [error, setError] = useState<string | false>(false);
     const [starships, setStarships] = useState<Starship[]>([]);
     const [loading, setLoading] = useState(false);
-    const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [searchTerm, setSearchTerm] = useState<string>('');
+    const { getQueryParam, setQueryParam } = useQueryParams();
+    const searchTerm = getQueryParam('search') || '';
+    const page = parseInt(getQueryParam('page') || '1', 10);
+   
 
     const getStarships = async (search: string, page: number) => {
         try {
@@ -29,8 +32,12 @@ const Starships: React.FC = () => {
     };
 
     const handleSearch = (search: string) => {
-        setSearchTerm(search);
-        setPage(1);
+        setQueryParam('search', search);
+        setQueryParam('page', '1');
+    }
+
+    const handlePageChange = (newPage: number) => {
+        setQueryParam('page', newPage.toString());
     }
 
     useEffect(() => {
@@ -56,8 +63,8 @@ const Starships: React.FC = () => {
             <Pagination
                 hasPreviousPage={page > 1}
                 hasNextPage={page < totalPages}
-                onPrevious={() => setPage(page - 1)}
-                onNext={() => setPage(page + 1)}
+                onPrevious={() => handlePageChange(page - 1)}
+                onNext={() => handlePageChange(page + 1)}
                 page={page}
                 totalPages={totalPages}
             />
