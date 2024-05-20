@@ -53,6 +53,7 @@ const Vehicles: React.FC = () => {
                 </Row>
             )}
 
+            {totalPages > 1 && (
             <Pagination
                 hasPreviousPage={page > 1}
                 hasNextPage={page < totalPages}
@@ -61,6 +62,7 @@ const Vehicles: React.FC = () => {
                 page={page}
                 totalPages={totalPages}
             />
+            )}
         </Container>
     );
 };

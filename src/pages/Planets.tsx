@@ -53,7 +53,8 @@ const Planets: React.FC = () => {
         ))}
       </Row>
     )}
-       <Pagination
+       {totalPages > 1 && (
+            <Pagination
                 hasPreviousPage={page > 1}
                 hasNextPage={page < totalPages}
                 onPrevious={() => setPage(page - 1)}
@@ -61,6 +62,7 @@ const Planets: React.FC = () => {
                 page={page}
                 totalPages={totalPages}
             />
+            )}
 
     </Container>
   )

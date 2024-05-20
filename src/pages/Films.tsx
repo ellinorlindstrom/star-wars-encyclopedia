@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Film } from '../types/Films.types';
 import SearchForm from '../components/SearchForm';
 import FilmCard from '../components/FilmCard';
@@ -51,6 +51,7 @@ const Films: React.FC = () => {
                 ))}
             </Row>
 
+            {totalPages > 1 && (
             <Pagination
                 hasPreviousPage={page > 1}
                 hasNextPage={page < totalPages}
@@ -59,6 +60,7 @@ const Films: React.FC = () => {
                 page={page}
                 totalPages={totalPages}
             />
+            )}
         </Container>
     );
 };

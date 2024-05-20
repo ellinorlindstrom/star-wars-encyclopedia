@@ -52,6 +52,7 @@ const Starships: React.FC = () => {
                     ))}
                 </Row>
             )}
+           {totalPages > 1 && (
             <Pagination
                 hasPreviousPage={page > 1}
                 hasNextPage={page < totalPages}
@@ -60,6 +61,7 @@ const Starships: React.FC = () => {
                 page={page}
                 totalPages={totalPages}
             />
+            )}
         </Container>
     );
 };
