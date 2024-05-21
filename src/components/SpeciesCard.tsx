@@ -1,7 +1,7 @@
-import { SpeciesDetails } from "../types/Species.types";
 import { Button } from 'react-bootstrap';
+import { SpeciesInterface } from "../types/StarWarsApi.Types";
 
-const SpeciesCard = ({ species }: { species: SpeciesDetails }) => {
+const SpeciesCard = ({ species }: { species: SpeciesInterface }) => {
     return (
         <div className="card h-100"> 
         <div className="card-body flex-grow-1">

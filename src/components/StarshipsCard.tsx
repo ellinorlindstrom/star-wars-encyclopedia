@@ -1,7 +1,7 @@
-import { Starship } from "../types/Starships.types";
+import { StarshipInterface } from "../types/StarWarsApi.Types";
 import { Button } from 'react-bootstrap';
 
-const StarshipsCard = ({ starship }: { starship: Starship }) => {
+const StarshipsCard = ({ starship }: { starship: StarshipInterface }) => {
     return (
         <div className="card h-100"> 
         <div className="card-body flex-grow-1">

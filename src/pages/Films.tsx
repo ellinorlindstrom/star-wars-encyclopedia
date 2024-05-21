@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Film } from '../types/Films.types';
+import { FilmInterface } from '../types/StarWarsApi.Types';
 import SearchForm from '../components/SearchForm';
 import FilmCard from '../components/FilmCard';
 import { Col, Container, Row } from 'react-bootstrap';
-import { apiService } from '../services/StarWarsAPI';
-import  Pagination from '../components/Pagination';
+import { getFilms as fetchFilms } from '../services/StarWarsAPI';
+import Pagination from '../components/Pagination';
 import useQueryParams from '../hooks/useQueryParams';
 
 const Films: React.FC = () => {
     const [error, setError] = useState<string | false>(false);
-    const [films, setFilms] = useState<Film[]>([]);
+    const [films, setFilms] = useState<FilmInterface[]>([]);
     const [loading, setLoading] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const { getQueryParam, setQueryParam } = useQueryParams();
@@ -21,16 +21,16 @@ const Films: React.FC = () => {
         try {
             setError(false);
             setLoading(true);
-            const data = await apiService.getFilms(search, page);
+            const data = await fetchFilms(search, page);
             setFilms(data.results);
             setTotalPages(Math.ceil(data.count / 10));
+            console.log('Film:', films)
         } catch (error) {
             setError('An error occurred');
         } finally {
             setLoading(false);
         }
     };
-
 
     const handleSearch = (search: string) => {
         setQueryParam('search', search);
@@ -51,23 +51,16 @@ const Films: React.FC = () => {
             <SearchForm onSubmit={handleSearch} placeholder="Search for a film" />
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            <Row>
-                {films.map((film, index) => (
-                    <Col sm={12} md={6} lg={4} key={index} className="mb-4">
-                        <FilmCard film={film} />
-                    </Col>
-                ))}
-            </Row>
-
+            <FilmCard films={films} />
             {totalPages > 1 && (
-            <Pagination
-                hasPreviousPage={page > 1}
-                hasNextPage={page < totalPages}
-                onPrevious={() => handlePageChange(page - 1)}
-                onNext={() => handlePageChange(page + 1)}
-                page={page}
-                totalPages={totalPages}
-            />
+                <Pagination
+                    hasPreviousPage={page > 1}
+                    hasNextPage={page < totalPages}
+                    onPrevious={() => handlePageChange(page - 1)}
+                    onNext={() => handlePageChange(page + 1)}
+                    page={page}
+                    totalPages={totalPages}
+                />
             )}
         </Container>
     );

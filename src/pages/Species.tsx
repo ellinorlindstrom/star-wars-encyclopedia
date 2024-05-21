@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { SpeciesDetails } from '../types/Species.types';
-import { apiService } from '../services/StarWarsAPI';
+import { SpeciesInterface } from '../types/StarWarsApi.Types';
+import { getSpecies as fetchSpecies } from '../services/StarWarsAPI';
 import SearchForm from '../components/SearchForm';
 import { Col, Container, Row } from 'react-bootstrap';
 import SpeciesCard from '../components/SpeciesCard';
@@ -9,7 +9,7 @@ import useQueryParams from '../hooks/useQueryParams';
 
 const Species: React.FC = () => {
     const [error, setError] = useState<string | false>(false);
-    const [species, setSpecies] = useState<SpeciesDetails[]>([]);
+    const [species, setSpecies] = useState<SpeciesInterface[]>([]);
     const [loading, setLoading] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const { getQueryParam, setQueryParam } = useQueryParams();
@@ -21,7 +21,7 @@ const Species: React.FC = () => {
         try {
             setError(false);
             setLoading(true);
-            const data = await apiService.getSpecies(search, page);
+            const data = await fetchSpecies(search, page);
             setSpecies(data.results);
             setTotalPages(Math.ceil(data.count / 10));
         } catch (error) {

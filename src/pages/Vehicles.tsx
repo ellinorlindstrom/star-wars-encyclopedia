@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Vehicle } from '../types/Vehicles.types';
-import { apiService } from '../services/StarWarsAPI';
+import { VehicleInterface } from '../types/StarWarsApi.Types';
+import { getVehicles as fetchVehicle } from '../services/StarWarsAPI';
 import SearchForm from '../components/SearchForm';
 import { Col, Container, Row } from 'react-bootstrap';
 import VehiclesCard from '../components/VehiclesCard';
@@ -9,7 +9,7 @@ import useQueryParams from '../hooks/useQueryParams';
 
 const Vehicles: React.FC = () => {
     const [error, setError] = useState<string | false>(false);
-    const [vehicles, setVehicles] = useState<Vehicle[]>([]);
+    const [vehicles, setVehicles] = useState<VehicleInterface[]>([]);
     const [loading, setLoading] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const { getQueryParam, setQueryParam } = useQueryParams();
@@ -20,7 +20,7 @@ const Vehicles: React.FC = () => {
         try {
             setError(false);
             setLoading(true);
-            const data = await apiService.getVehicles(search, page);
+            const data = await fetchVehicle(search, page);
             setVehicles(data.results);
             setTotalPages(Math.ceil(data.count / 10));
         } catch (error) {

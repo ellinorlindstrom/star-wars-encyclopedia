@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Starship } from '../types/Starships.types';
-import { apiService } from '../services/StarWarsAPI';
+import { StarshipInterface } from '../types/StarWarsApi.Types';
+import { getStarships as fetchStarships } from '../services/StarWarsAPI';
 import SearchForm from '../components/SearchForm';
 import { Col, Container, Row } from 'react-bootstrap';
 import StarshipsCard from '../components/StarshipsCard';
@@ -9,7 +9,7 @@ import useQueryParams from '../hooks/useQueryParams';
 
 const Starships: React.FC = () => {
     const [error, setError] = useState<string | false>(false);
-    const [starships, setStarships] = useState<Starship[]>([]);
+    const [starships, setStarships] = useState<StarshipInterface[]>([]);
     const [loading, setLoading] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const { getQueryParam, setQueryParam } = useQueryParams();
@@ -21,7 +21,7 @@ const Starships: React.FC = () => {
         try {
             setError(false);
             setLoading(true);
-            const data = await apiService.getStarships(search, page);
+            const data = await fetchStarships(search, page);
             setStarships(data.results);
             setTotalPages(Math.ceil(data.count / 10));
         } catch (error) {

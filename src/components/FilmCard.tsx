@@ -1,20 +1,37 @@
-import { Film } from '../types/Films.types';
-import { Button } from 'react-bootstrap';
+import React from 'react';
+import { FilmInterface } from '../types/StarWarsApi.Types';
+import { Button, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+interface FilmCardProps {
+    films: FilmInterface[];
+}
 
 
-const FilmCard = ({ film }: { film: Film }) => {
+
+const FilmCard: React.FC<FilmCardProps> = ({ films }) => {
+    console.log('Film:', films)
     return (
-        <div className="card h-100"> 
-        <div className="card-body flex-grow-1">
-            <h2 className="card-title">{film.title}</h2>
-            <p className="card-text">Episode {film.episode_id}</p>
-            <p className="card-text">📅 Released {film.release_date}</p>
-            <p className="card-text">🧍 {film.characters.length} characters</p>
-        </div>
-        <div className="card-footer mt-auto "> 
-            <Button variant="success">Read more</Button>
-        </div>
-    </div>
+        <Row>
+            {films?.map((film) => (
+                <Col sm={12} md={6} lg={4} key={film.id} className="mb-4">
+                    <div className="card h-100"> 
+                        <div className="card-body flex-grow-1">
+                         <h5 className="card-title">{film.title}</h5>
+                         <img src={film.image_url} alt={film.title} className="img-fluid mb-3" />
+                        <p className="card-text">📅 Released {film.release_date}</p>
+                        </div>
+                    <div className="card-footer mt-auto "> 
+                        <Button variant="success">
+                        <Link to={`/films/${film.id}`} className="text-white text-decoration-none">
+                        Read more
+                        </Link>
+                        </Button>
+                        </div>
+                    </div>
+                </Col>
+            ))}
+        </Row>
+      
     );
 }
 

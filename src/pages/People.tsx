@@ -1,5 +1,5 @@
-import { apiService } from "../services/StarWarsAPI";
-import { Person } from "../types/People.types";
+import { getPeople as fetchPeople } from "../services/StarWarsAPI";
+import { PeopleInterface } from "../types/StarWarsApi.Types"
 import { useState, useEffect } from "react";
 import SearchForm from "../components/SearchForm";
 import PeopleCard from "../components/PeopleCard";
@@ -10,7 +10,7 @@ import useQueryParams from "../hooks/useQueryParams";
 
 const People: React.FC = () => {
     const [error, setError] = useState<string | false>(false);
-    const [people, setPeople] = useState<Person[]>([]);
+    const [people, setPeople] = useState<PeopleInterface[]>([]);
     const [loading, setLoading] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const { getQueryParam, setQueryParam } = useQueryParams();
@@ -22,7 +22,7 @@ const People: React.FC = () => {
         try {
             setError(false);
             setLoading(true);
-            const data = await apiService.getPeople(search, page);
+            const data = await fetchPeople(search, page);
             setPeople(data.results);
             setTotalPages(Math.ceil(data.count / 10));
         } catch (error) {

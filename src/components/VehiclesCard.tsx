@@ -1,7 +1,7 @@
-import { Vehicle } from "../types/Vehicles.types";
+import { VehicleInterface } from "../types/StarWarsApi.Types";
 import { Button } from 'react-bootstrap';
 
-const VehiclesCard = ({ vehicle }: { vehicle: Vehicle }) => {
+const VehiclesCard = ({ vehicle }: { vehicle: VehicleInterface }) => {
     return (
         <div className="card h-100"> 
         <div className="card-body flex-grow-1">

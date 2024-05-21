@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Planet } from '../types/Planets.types';
-import { apiService } from '../services/StarWarsAPI';
+import { PlanetInterface } from '../types/StarWarsApi.Types';
+import { getPlanets as fetchPlanets } from '../services/StarWarsAPI';
 import SearchForm from '../components/SearchForm';
 import { Col, Container, Row } from 'react-bootstrap';
 import PlanetsCard from '../components/PlanetsCard';
@@ -9,7 +9,7 @@ import useQueryParams from '../hooks/useQueryParams';
 
 const Planets: React.FC = () => {
   const [error, setError] = useState<string | false>(false);
-  const [planets, setPlanets] = useState<Planet[]>([]);
+  const [planets, setPlanets] = useState<PlanetInterface[]>([]);
   const [loading, setLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const { getQueryParam, setQueryParam } = useQueryParams();
@@ -21,7 +21,7 @@ const Planets: React.FC = () => {
     try {
       setError(false);
       setLoading(true);
-      const data = await apiService.getPlanets(search, page);
+      const data = await fetchPlanets(search, page);
       setPlanets(data.results);
       setTotalPages(Math.ceil(data.count / 10));
     } catch (error) {
