@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import AppNavbar from "./components/Navbar";
 import { Container } from "react-bootstrap";
 import Films from "./pages/Films";
-//import FilmDetail from "./pages/FilmDetail";
+import FilmDetail from "./pages/FilmDetails";
 import People from "./pages/People";
 import Planets from "./pages/Planets";
 import Species from "./pages/Species";
@@ -18,8 +18,8 @@ function App() {
       <Routes>
       <Route path="/" element={<Navigate to="/films" />} />
       <Route path="/films" element={<Films />} />
-{/*       <Route path="/films/:filmid" element={<FilmDetail />} />
- */}        <Route path="/people" element={<People/>} />
+      <Route path="/films/:filmid" element={<FilmDetail />} />
+        <Route path="/people" element={<People/>} />
         <Route path="/planets" element={<Planets/>} />
         <Route path="/species" element={<Species/>} />
         <Route path="/starships" element={<Starships/>} />

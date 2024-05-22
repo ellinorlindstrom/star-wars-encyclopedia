@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FilmInterface } from '../types/StarWarsApi.Types';
 import SearchForm from '../components/SearchForm';
 import FilmCard from '../components/FilmCard';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { getFilms as fetchFilms } from '../services/StarWarsAPI';
 import Pagination from '../components/Pagination';
 import useQueryParams from '../hooks/useQueryParams';

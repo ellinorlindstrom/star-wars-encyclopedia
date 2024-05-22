@@ -13,7 +13,6 @@ import {
     VehicleInterface, 
     VehicleDetailsInterface 
 } from "../types/StarWarsApi.Types";
-import Films from "../pages/Films";
 
 const instance = axios.create({
     baseURL: "https://swapi.thehiveresistance.com/api",
@@ -37,7 +36,8 @@ export const getFilms = async (search: string, page: number) => {
 }
 
 export const getFilm = async (id: number) => {
-    return get<FilmDetailsInterface>(`/films/${id}/`);
+    const data = await get<FilmDetailsInterface>(`films/${id}/`);
+    return data;
 }
 
 export const getPeople = async (search: string, page: number) => {
