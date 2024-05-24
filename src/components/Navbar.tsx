@@ -1,45 +1,32 @@
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 interface AppNavbarProps {}
 
 const AppNavbar: FC<AppNavbarProps> = () => {
   return (
-    <Navbar 
-      bg="dark" 
-      variant="dark"
-      expand="lg"
-      >
+    <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand>Star Wars Encyclopedia</Navbar.Brand>
+        <Navbar.Brand>
+          <Link to="/" className="title text-white text-decoration-none">
+            Star Wars Encyclopedia
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <LinkContainer to="/films">
-            <Nav.Link>Films</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/people">
-            <Nav.Link>People</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/planets">
-            <Nav.Link>Planets</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/species">
-            <Nav.Link>Species</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/starships">
-            <Nav.Link>Starships</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/vehicles">
-            <Nav.Link>Vehicles</Nav.Link>
-            </LinkContainer>
+            <Nav.Link as={Link} to="/films">Films</Nav.Link>
+            <Nav.Link as={Link} to="/people">People</Nav.Link>
+            <Nav.Link as={Link} to="/planets">Planets</Nav.Link>
+            <Nav.Link as={Link} to="/species">Species</Nav.Link>
+            <Nav.Link as={Link} to="/starships">Starships</Nav.Link>
+            <Nav.Link as={Link} to="/vehicles">Vehicles</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        </Container>
+      </Container>
     </Navbar>
-    );
+  );
 };
 
 export default AppNavbar;
-

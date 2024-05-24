@@ -86,7 +86,6 @@ export interface PeopleDetailsInterface {
     created: string;
     edited: string;
     films: FilmInterface[];
-    planets: PlanetInterface[];
     starships: {
         id: number;
         name: string;
@@ -122,6 +121,23 @@ export interface PlanetInterface {
     edited: string;
     films_count: number;
     residents_count: number;
+    residents: ResidentInterface[];
+}
+
+export interface ResidentInterface {
+    id: number;
+    name: string;
+    birth_year: string;
+    eye_color: string;
+    hair_color: string;
+    height: string;
+    mass: string;
+    skin_color: string;
+    wiki_link: string;
+    image_url: string;
+    affiliations: string[];
+    created: string;
+    edited: string;
 }
 
 export interface PlanetDetailsInterface {

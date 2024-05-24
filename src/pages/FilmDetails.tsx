@@ -4,7 +4,7 @@ import { getFilm as fetchFilm } from "../services/StarWarsAPI";
 import { useEffect, useState } from "react";
 
 const FilmDetail = () => {
-    const { filmid } = useParams<{ filmid: number }>();
+    const { filmid } = useParams<{ filmid: string }>();
     const [film, setFilm] = useState<FilmDetailsInterface | null>(null);
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);

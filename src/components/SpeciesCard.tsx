@@ -1,5 +1,6 @@
 import { Button } from 'react-bootstrap';
 import { SpeciesInterface } from "../types/StarWarsApi.Types";
+import { Link } from 'react-router-dom';
 
 const SpeciesCard = ({ species }: { species: SpeciesInterface }) => {
     return (
@@ -11,7 +12,9 @@ const SpeciesCard = ({ species }: { species: SpeciesInterface }) => {
             <p className="card-text">🌑 Language: {species.language}</p>
         </div>
         <div className="card-footer mt-auto "> 
-            <Button variant="success">Read more</Button>
+        <Button variant="success">
+            <Link to={`/species/${species.id}`} className="text-white text-decoration-none">
+            Read more</Link></Button>
         </div>
     </div>
     );

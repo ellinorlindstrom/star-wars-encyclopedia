@@ -25,16 +25,13 @@ const People: React.FC = () => {
             const data = await fetchPeople(search, page);
             setPeople(data.results);
             setTotalPages(Math.ceil(data.count / 10));
+            console.log('People:', people)
         } catch (error) {
             setError('An error occurred');
         } finally {
             setLoading(false);
         }
     };
-
-    useEffect(() => {
-        getPeople(searchTerm, page);
-    }, [searchTerm, page]);
 
     const handleSearch = (search: string) => {
         setQueryParam('search', search);
@@ -45,21 +42,23 @@ const People: React.FC = () => {
         setQueryParam('page', newPage.toString());
     };
 
+    useEffect(() => {
+        getPeople(searchTerm, page);
+    }, [page, searchTerm]);
+
     return (
         <Container>
             <h1>People</h1>
             <SearchForm onSubmit={handleSearch} placeholder='Search for a person' />
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            {people.length > 0 && (
                 <Row>
-                    {people.map((person, index) => (
-                        <Col sm={12} md={6} lg={4} key={index} className="mb-4">
-                        <PeopleCard key={index} person={person} />
-                        </Col>
-                    ))}
+                        {people.map((person, index) => (
+                            <Col sm={12} md={6} lg={4} key={index} className="mb-4">
+                            <PeopleCard key={index} person={person} />
+                            </Col>
+                        ))}
                 </Row>
-            )}
             {totalPages > 1 && (
             <Pagination
                 hasPreviousPage={page > 1}

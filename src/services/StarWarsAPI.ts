@@ -36,8 +36,8 @@ export const getFilms = async (search: string, page: number) => {
 }
 
 export const getFilm = async (id: number) => {
-    const data = await get<FilmDetailsInterface>(`films/${id}/`);
-    return data;
+    return get<FilmDetailsInterface>(`films/${id}/`);
+    
 }
 
 export const getPeople = async (search: string, page: number) => {
@@ -46,7 +46,8 @@ export const getPeople = async (search: string, page: number) => {
 }
 
 export const getPerson = async (id: number) => {
-    return get<PeopleDetailsInterface>(`/people/${id}/`);
+    console.log('ID:', id);
+    return get<PeopleDetailsInterface>(`people/${id}/`);
 }
 
 export const getPlanets = async (search: string, page: number) => {
