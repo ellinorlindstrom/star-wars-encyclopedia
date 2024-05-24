@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { SpeciesDetailsInterface} from "../types/StarWarsApi.Types";
 import { getSpecie as fetchSpecies } from "../services/StarWarsAPI";
 import { useEffect, useState } from "react";
@@ -56,21 +56,21 @@ const SpeciesDetails = () => {
                 {species.people.map((person) => (
                     <div className="card mb-2" key={person.id}>
                         <div className="card-body">
-                            <h6 className="card-title">{person.name}</h6>
+                            <Link to={`/people/${person.id}`} className="text-black text-decoration-none">{person.name}</Link>
                         </div>
                     </div>
                 ))}
                 <h6 className="card-subtitle mb-2 text-muted">Homeworld:</h6>
                 <div className="card mb-2">
                     <div className="card-body">
-                        <h6 className="card-title">{species.homeworld.name}</h6>
+                        <Link to={`/planets/${species.homeworld.id}`} className="text-black text-decoration-none">{species.homeworld.name}</Link>
                     </div>
                 </div>
                 <h6 className="card-subtitle mb-2 text-muted">Films:</h6>
                 {species.films.map((film) => (
                     <div className="card mb-2" key={film.id}>
                         <div className="card-body">
-                            <h6 className="card-title">{film.title}</h6>
+                            <Link to={`/films/${film.id}`} className="text-black text-decoration-none">{film.title}</Link>
                         </div>
                     </div>
                 ))}

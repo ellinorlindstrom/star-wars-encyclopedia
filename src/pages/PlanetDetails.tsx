@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { PlanetDetailsInterface} from "../types/StarWarsApi.Types";
 import { getPlanet as fetchPlanet } from "../services/StarWarsAPI";
 import { useEffect, useState } from "react";
@@ -56,7 +56,7 @@ const PlanetDetails = () => {
                 {planet.residents.map((resident) => (
                     <div className="card mb-2" key={resident.id}>
                         <div className="card-body">
-                            <h6 className="card-title">{resident.name}</h6>
+                            <Link to={`/people/${resident.id}`} className="text-black text-decoration-none">{resident.name}</Link>
                         </div>
                     </div>
                 ))}

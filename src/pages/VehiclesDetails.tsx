@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { VehicleDetailsInterface} from "../types/StarWarsApi.Types";
 import { getVehicle as fetchVehicle } from "../services/StarWarsAPI";
 import { useEffect, useState } from "react";
@@ -59,7 +59,7 @@ const VehicleDetails = () => {
                     vehicle.pilots.map((pilot) => (
                         <div className="card mb-2" key={pilot.id}>
                             <div className="card-body">
-                                <h6 className="card-title">{pilot.name}</h6>
+                                <Link to={`/people/${pilot.id}`} className="text-black text-decoration-none">{pilot.name}</Link>
                             </div>
                         </div>
                     ))            
@@ -70,7 +70,7 @@ const VehicleDetails = () => {
                 {vehicle.films.map((film) => (
                     <div className="card mb-2" key={film.id}>
                         <div className="card-body">
-                            <h6 className="card-title">{film.title}</h6>
+                            <Link to={`/films/${film.id}`} className="text-black text-decoration-none">{film.title}</Link>
                         </div>
                     </div>
                 ))}

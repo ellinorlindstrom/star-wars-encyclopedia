@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { PeopleDetailsInterface} from "../types/StarWarsApi.Types";
 import { getPerson as fetchPerson } from "../services/StarWarsAPI";
 import { useEffect, useState } from "react";
@@ -8,7 +8,7 @@ const PeopleDetails = () => {
     const [person, setPerson] = useState<PeopleDetailsInterface | null>(null);
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const personid = Number(id);
+    const personId = Number(id);
 
     const getPerson = async (id: number) => {
         try {
@@ -25,15 +25,15 @@ const PeopleDetails = () => {
     };
 
     useEffect(() => {
-        if (personid) {
-            getPerson (personid); 
-            console.log('Person ID:', personid)
+        if (personId) {
+            getPerson (personId); 
+            console.log('Person ID:', personId)
         } else {
             setError('Invalid person ID.');
-            console.log('Invalid person ID:', personid)
+            console.log('Invalid person ID:', personId)
             setLoading(false);
         }
-    }, [personid]);
+    }, [personId]);
 
     if (isLoading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
@@ -58,7 +58,7 @@ const PeopleDetails = () => {
                 {person.films.map((film) => (
                         <div className="card mb-2" key={film.id}>
                         <div className="card-body">
-                            <h6 className="card-title">{film.title}</h6>
+                            <Link to={`/films/${film.id}`} className="text-black text-decoration-none">{film.title}</Link>
                         </div>
                         </div>
                     ))}
@@ -68,7 +68,7 @@ const PeopleDetails = () => {
                     person.starships.map((starship) => (
                         <div className="card mb-2" key={starship.id}>
                         <div className="card-body">
-                            <h6 className="card-title">{starship.name}</h6>
+                            <Link to={`/starship/${starship.id}`} className="text-black text-decoration-none">{starship.name}</Link>
                         </div>
                         </div>
                     ))
@@ -81,7 +81,7 @@ const PeopleDetails = () => {
                     person.vehicles.map((vehicle) => (
                         <div className="card mb-2" key={vehicle.id}>
                         <div className="card-body">
-                            <h6 className="card-title">{vehicle.name}</h6>
+                            <Link to={`/vehicle/${vehicle.id}`} className="text-black text-decoration-none">{vehicle.name}</Link>
                         </div>
                         </div>
                     ))
@@ -94,7 +94,7 @@ const PeopleDetails = () => {
                     person.species.map((specie) => (
                         <div className="card mb-2" key={specie.id}>
                         <div className="card-body">
-                            <h6 className="card-title">{specie.name}</h6>
+                            <Link to={`/species/${specie.id}`} className="text-black text-decoration-none">{specie.name}</Link>
                         </div>
                         </div>
                            ))
@@ -105,7 +105,7 @@ const PeopleDetails = () => {
                 <h3 className="card-subtitle mb-2 text-muted">Homeworld</h3>
                 <div className="card mb-2">
                 <div className="card-body">
-                <h6 className="card-title">{person.homeworld.name}</h6>
+                <Link to={`/planets/${person.homeworld.id}`} className="text-black text-decoration-none">{person.homeworld.name}</Link>
                 </div>
                 </div>
             </div>
