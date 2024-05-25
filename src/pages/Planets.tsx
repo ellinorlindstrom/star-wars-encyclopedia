@@ -1,26 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { PlanetInterface } from '../types/StarWarsApi.Types';
-import { getPlanets as fetchPlanets } from '../services/StarWarsAPI';
-import SearchForm from '../components/SearchForm';
 import { Col, Container, Row } from 'react-bootstrap';
-import PlanetsCard from '../components/PlanetsCard';
+import { getPlanets as fetchPlanets } from '../services/StarWarsAPI';
+import { PlanetInterface } from '../types/StarWarsApi.Types';
 import Pagination from '../components/Pagination';
+import PlanetsCard from '../components/PlanetsCard';
+import React, { useEffect, useState } from 'react';
+import SearchForm from '../components/SearchForm';
 import useQueryParams from '../hooks/useQueryParams';
+import { useLocation } from 'react-router-dom';
 
 const Planets: React.FC = () => {
   const [error, setError] = useState<string | false>(false);
-  const [planets, setPlanets] = useState<PlanetInterface[]>([]);
   const [loading, setLoading] = useState(false);
+  const [planets, setPlanets] = useState<PlanetInterface[]>([]);
+  const [showLoadingMessage, setShowLoadingMessage] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const { getQueryParam, setQueryParam } = useQueryParams();
-  const searchTerm = getQueryParam('search') || '';
+  const location = useLocation();
+  const category = location.pathname.split('/')[1];
   const page = parseInt(getQueryParam('page') || '1', 10);
-
+  const searchTerm = getQueryParam('search') || '';
 
   const getPlanets = async (search: string, page: number) => {
     try {
       setError(false);
       setLoading(true);
+      setShowLoadingMessage(true);
       const data = await fetchPlanets(search, page);
       setPlanets(data.results);
       setTotalPages(Math.ceil(data.count / 10));
@@ -28,6 +32,9 @@ const Planets: React.FC = () => {
       setError('An error occurred');
     } finally {
       setLoading(false);
+      setTimeout(() => {
+        setShowLoadingMessage(false);
+      }, 2000);
     }
   };
 
@@ -44,13 +51,16 @@ const Planets: React.FC = () => {
     getPlanets(searchTerm, page);
   }, [page, searchTerm]);
 
+  const loadingMessage = searchTerm ? `Searching for ${searchTerm}...` : `Searching for ${category}...`;
+
   return (
     <Container>
-    <h1>Planets</h1>
-    <SearchForm onSubmit={handleSearch} placeholder='Search for a planet' />
-    {loading && <p>Loading...</p>}
-    {error && <p>{error}</p>}
-    {planets.length > 0 && (
+      <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
+      <SearchForm onSubmit={handleSearch} placeholder={`Search for a ${category}`} />
+      {error && <p>{error}</p>}
+      {(loading || showLoadingMessage) && <p>{loadingMessage}</p>}
+      {!loading && !showLoadingMessage && planets.length === 0 && <h5>No {category} found 🪐</h5>}
+      {!loading && !showLoadingMessage && planets.length > 0 && (
       <Row>
         {planets.map((planet, index) => (
           <Col sm={12} md={6} lg={4} key={index} className="mb-4">

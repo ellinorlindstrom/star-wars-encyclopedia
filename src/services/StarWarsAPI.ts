@@ -16,7 +16,7 @@ import {
 
 const instance = axios.create({
     baseURL: "https://swapi.thehiveresistance.com/api",
-    timeout: 10000,
+    timeout: 50000,
     headers: { 
         Accept: "application/json",
         "Content-Type": "application/json" 

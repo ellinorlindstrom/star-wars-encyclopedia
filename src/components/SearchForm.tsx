@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -8,11 +8,12 @@ interface SearchFormProps {
 }
 
 const SearchForm: React.FC<SearchFormProps> = ({ onSubmit, placeholder }) => {
-    const [search, setSearch] = useState('');
+    const [searchInput, setSearchInput] = useState('');
+    const inputSearchQueryEl = useRef<HTMLInputElement>(null);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        onSubmit(search);
+        onSubmit(searchInput);
     };
 
     return (
@@ -20,14 +21,15 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSubmit, placeholder }) => {
             <Form.Group className='mb-3'>
                 <Form.Label>Search</Form.Label>
                 <Form.Control
-                    onChange={(e) => setSearch(e.target.value)}
+                    onChange={(e) => setSearchInput(e.target.value)}
                     type="text"
-                    placeholder={placeholder} />
+                    placeholder={placeholder}
+                    ref={inputSearchQueryEl}
+                    value={searchInput}
+                />
             </Form.Group>
             <div className="d-flex justify-content-end">
-                <Button
-                    variant="success"
-                    type="submit">
+                <Button variant="success" type="submit">
                     Submit
                 </Button>
             </div>

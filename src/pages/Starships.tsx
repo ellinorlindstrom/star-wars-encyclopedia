@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { StarshipInterface } from '../types/StarWarsApi.Types';
 import { getStarships as fetchStarships } from '../services/StarWarsAPI';
 import SearchForm from '../components/SearchForm';
@@ -11,16 +12,22 @@ const Starships: React.FC = () => {
     const [error, setError] = useState<string | false>(false);
     const [starships, setStarships] = useState<StarshipInterface[]>([]);
     const [loading, setLoading] = useState(false);
+    const [showLoadingMessage, setShowLoadingMessage] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const { getQueryParam, setQueryParam } = useQueryParams();
+    const location = useLocation();
+
     const searchTerm = getQueryParam('search') || '';
     const page = parseInt(getQueryParam('page') || '1', 10);
-   
+
+    // Extract the category from the URL path
+    const category = location.pathname.split('/')[1];
 
     const getStarships = async (search: string, page: number) => {
         try {
             setError(false);
             setLoading(true);
+            setShowLoadingMessage(true);
             const data = await fetchStarships(search, page);
             setStarships(data.results);
             setTotalPages(Math.ceil(data.count / 10));
@@ -28,6 +35,9 @@ const Starships: React.FC = () => {
             setError('An error occurred');
         } finally {
             setLoading(false);
+            setTimeout(() => {
+                setShowLoadingMessage(false);
+            }, 2000);
         }
     };
 
@@ -44,17 +54,20 @@ const Starships: React.FC = () => {
         getStarships(searchTerm, page);
     }, [page, searchTerm]);
 
+    const loadingMessage = searchTerm ? `Searching for ${searchTerm}...` : `Searching for ${category}...🚀`;
+
     return (
         <Container>
-            <h1>Starships</h1>
-            <SearchForm onSubmit={handleSearch} placeholder='Search for a starship' />
-            {loading && <p>Loading...</p>}
+            <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
+            <SearchForm onSubmit={handleSearch} placeholder={`Search for a ${category}🚀`} />
             {error && <p>{error}</p>}
-            {starships.length > 0 && (
+            {(loading || showLoadingMessage) && <p>{loadingMessage}</p>}
+            {!loading && !showLoadingMessage && starships.length === 0 && <h5>No {category} found 🚀</h5>}
+            {!loading && !showLoadingMessage && starships.length > 0 && (
                 <Row>
                     {starships.map((starship, index) => (
-                      <Col sm={12} md={6} lg={4} key={index} className="mb-4">
-                        <StarshipsCard starship={starship} />
+                        <Col sm={12} md={6} lg={4} key={index} className="mb-4">
+                            <StarshipsCard starship={starship} />
                         </Col>
                     ))}
                 </Row>
@@ -73,4 +86,4 @@ const Starships: React.FC = () => {
     );
 };
 
-export default Starships
+export default Starships;
