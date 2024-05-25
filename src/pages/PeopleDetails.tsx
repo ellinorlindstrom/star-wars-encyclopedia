@@ -53,7 +53,8 @@ const PeopleDetails = () => {
                 <p className="card-text">Skin color: {person.skin_color}</p>
                 <p className="card-text">Wiki link: <a href={person.wiki_link} target="_blank" rel="noopener noreferrer">{person.wiki_link}</a></p>
                 <p className="card-text">Affiliations: {person.affiliations.join(', ')}</p>
-
+            </div>
+            <div className="card-footer">
                 <h4 className="card-subtitle mb-2 text-muted">Films</h4>
                 {person.films.map((film) => (
                         <div className="card mb-2" key={film.id}>

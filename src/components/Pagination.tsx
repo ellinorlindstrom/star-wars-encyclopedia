@@ -18,7 +18,7 @@ const Pagination: React.FC<PaginationProps> = ({
     totalPages 
 }) => {
     return (
-        <div className="d-flex justify-content-between">
+        <div className="mb-5 mt-3 d-flex justify-content-between">
             <Button 
                 onClick={onPrevious} 
                 disabled={!hasPreviousPage}

@@ -43,7 +43,7 @@ const StarshipDetails = () => {
     return (
         <div className="card h-100">
             <div className="card-body">
-                <h3 className="card-title">{starship.name}</h3>
+                <h2 className="card-title">{starship.name}</h2>
                 <p className="card-text">Model: {starship.model}</p>
                 <p className="card-text">Starship Class: {starship.starship_class}</p>
                 <p className="card-text">Manufacturer: {starship.manufacturer}</p>
@@ -56,7 +56,9 @@ const StarshipDetails = () => {
                 <p className="card-text">MGLT: {starship.MGLT}</p>
                 <p className="card-text">Cargo Capacity: {starship.cargo_capacity}</p>
                 <p className="card-text">Consumables: {starship.consumables}</p>
-                <h6 className="card-subtitle mb-2 text-muted">Pilots:</h6>
+                </div>
+                <div className="card-footer">
+                <h4 className="card-subtitle mb-2 text-muted">Pilots:</h4>
                 {starship.pilots && starship.pilots.length > 0 ? (
                     starship.pilots.map((pilot) => (
                         <div className="card mb-2" key={pilot.id}>
@@ -68,7 +70,7 @@ const StarshipDetails = () => {
                 ) : (
                     <p>No pilots available</p>
                 )}
-                <h6 className="card-subtitle mb-2 text-muted">Films:</h6>
+                <h4 className="card-subtitle mb-2 text-muted">Films:</h4>
                 {starship.films.map((film) => (
                     <div className="card mb-2" key={film.id}>
                         <div className="card-body">

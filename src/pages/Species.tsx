@@ -61,7 +61,7 @@ const Species: React.FC = () => {
             <SearchForm onSubmit={handleSearch} placeholder={`Search for a ${category}👽`} />
             {error && <p>{error}</p>}
             {(loading || showLoadingMessage) && <p>{loadingMessage}</p>}
-            {!loading && !showLoadingMessage && species.length === 0 && <h5>No {category}👽 found</h5>}
+            {!loading && !showLoadingMessage && species.length === 0 && <h5>No {category} found🐣</h5>}
             {!loading && !showLoadingMessage && species.length > 0 && (
                     <Row>
                     {species.map((species, index) => (
@@ -71,7 +71,7 @@ const Species: React.FC = () => {
                     ))}
                 </Row>
             )}
-             {totalPages > 1 && (
+             {!loading && !showLoadingMessage && totalPages > 1 && (
             <Pagination
                 hasPreviousPage={page > 1}
                 hasNextPage={page < totalPages}

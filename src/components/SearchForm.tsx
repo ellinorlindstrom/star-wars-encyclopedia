@@ -19,7 +19,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSubmit, placeholder }) => {
     return (
         <Form className='mb-4' onSubmit={handleSubmit}>
             <Form.Group className='mb-3'>
-                <Form.Label>Search</Form.Label>
+                <Form.Label>Search the Galaxy 💫</Form.Label>
                 <Form.Control
                     onChange={(e) => setSearchInput(e.target.value)}
                     type="text"

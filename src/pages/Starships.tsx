@@ -54,7 +54,7 @@ const Starships: React.FC = () => {
         getStarships(searchTerm, page);
     }, [page, searchTerm]);
 
-    const loadingMessage = searchTerm ? `Searching for ${searchTerm}...` : `Searching for ${category}...🚀`;
+    const loadingMessage = searchTerm ? `Searching for ${searchTerm}...` : `Searching for ${category}...`;
 
     return (
         <Container>
@@ -62,7 +62,7 @@ const Starships: React.FC = () => {
             <SearchForm onSubmit={handleSearch} placeholder={`Search for a ${category}🚀`} />
             {error && <p>{error}</p>}
             {(loading || showLoadingMessage) && <p>{loadingMessage}</p>}
-            {!loading && !showLoadingMessage && starships.length === 0 && <h5>No {category} found 🚀</h5>}
+            {!loading && !showLoadingMessage && starships.length === 0 && <h5>No {category} found 🛶</h5>}
             {!loading && !showLoadingMessage && starships.length > 0 && (
                 <Row>
                     {starships.map((starship, index) => (
@@ -72,7 +72,7 @@ const Starships: React.FC = () => {
                     ))}
                 </Row>
             )}
-           {totalPages > 1 && (
+           {!loading && !showLoadingMessage && totalPages > 1 && (
             <Pagination
                 hasPreviousPage={page > 1}
                 hasNextPage={page < totalPages}

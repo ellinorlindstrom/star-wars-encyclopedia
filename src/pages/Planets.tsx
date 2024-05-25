@@ -56,10 +56,10 @@ const Planets: React.FC = () => {
   return (
     <Container>
       <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
-      <SearchForm onSubmit={handleSearch} placeholder={`Search for a ${category}`} />
+      <SearchForm onSubmit={handleSearch} placeholder={`Search for a ${category}🪐`} />
       {error && <p>{error}</p>}
       {(loading || showLoadingMessage) && <p>{loadingMessage}</p>}
-      {!loading && !showLoadingMessage && planets.length === 0 && <h5>No {category} found 🪐</h5>}
+      {!loading && !showLoadingMessage && planets.length === 0 && <h5>No {category} found 🤯</h5>}
       {!loading && !showLoadingMessage && planets.length > 0 && (
       <Row>
         {planets.map((planet, index) => (
@@ -69,7 +69,7 @@ const Planets: React.FC = () => {
         ))}
       </Row>
     )}
-       {totalPages > 1 && (
+       {!loading && !showLoadingMessage && totalPages > 1 && (
             <Pagination
                 hasPreviousPage={page > 1}
                 hasNextPage={page < totalPages}

@@ -43,7 +43,7 @@ const SpeciesDetails = () => {
     return (
         <div className="card h-100">
             <div className="card-body">
-                <h5 className="card-title">{species.name}</h5>
+                <h2 className="card-title">{species.name}</h2>
                 <p className="card-text">Classification: {species.classification}</p>
                 <p className="card-text">Designation: {species.designation}</p>
                 <p className="card-text">Average Height: {species.average_height}</p>
@@ -52,7 +52,9 @@ const SpeciesDetails = () => {
                 <p className="card-text">Hair Colors: {species.hair_colors}</p>
                 <p className="card-text">Skin Colors: {species.skin_colors}</p>
                 <p className="card-text">Language: {species.language}</p>
-                <h6 className="card-subtitle mb-2 text-muted">People:</h6>
+                </div>
+                <div className="card-footer">
+                <h4 className="card-subtitle mb-2 text-muted">People:</h4>
                 {species.people.map((person) => (
                     <div className="card mb-2" key={person.id}>
                         <div className="card-body">
@@ -60,13 +62,13 @@ const SpeciesDetails = () => {
                         </div>
                     </div>
                 ))}
-                <h6 className="card-subtitle mb-2 text-muted">Homeworld:</h6>
+                <h4 className="card-subtitle mb-2 text-muted">Homeworld:</h4>
                 <div className="card mb-2">
                     <div className="card-body">
                         <Link to={`/planets/${species.homeworld.id}`} className="text-black text-decoration-none">{species.homeworld.name}</Link>
                     </div>
                 </div>
-                <h6 className="card-subtitle mb-2 text-muted">Films:</h6>
+                <h4 className="card-subtitle mb-2 text-muted">Films:</h4>
                 {species.films.map((film) => (
                     <div className="card mb-2" key={film.id}>
                         <div className="card-body">

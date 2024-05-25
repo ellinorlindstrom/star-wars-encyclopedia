@@ -43,7 +43,7 @@ const VehicleDetails = () => {
     return (
         <div className="card h-100">
             <div className="card-body">
-                <h3 className="card-title">{vehicle.name}</h3>
+                <h2 className="card-title">{vehicle.name}</h2>
                 <p className="card-text">Model: {vehicle.model}</p>
                 <p className="card-text">Vehicle Class: {vehicle.vehicle_class}</p>
                 <p className="card-text">Manufacturer: {vehicle.manufacturer}</p>
@@ -54,7 +54,9 @@ const VehicleDetails = () => {
                 <p className="card-text">Max Atmosphering Speed: {vehicle.max_atmosphering_speed}</p>
                 <p className="card-text">Cargo Capacity: {vehicle.cargo_capacity}</p>
                 <p className="card-text">Consumables: {vehicle.consumables}</p>
-                <h6 className="card-subtitle mb-2 text-muted">Pilots:</h6>
+                </div>
+                <div className="card-footer">
+                <h4 className="card-subtitle mb-2 text-muted">Pilots:</h4>
                 {vehicle.pilots && vehicle.pilots.length > 0 ? (
                     vehicle.pilots.map((pilot) => (
                         <div className="card mb-2" key={pilot.id}>
@@ -66,7 +68,7 @@ const VehicleDetails = () => {
                 ) : (
                     <p>No pilots available</p>
                 )}
-                <h6 className="card-subtitle mb-2 text-muted">Films:</h6>
+                <h4 className="card-subtitle mb-2 text-muted">Films:</h4>
                 {vehicle.films.map((film) => (
                     <div className="card mb-2" key={film.id}>
                         <div className="card-body">

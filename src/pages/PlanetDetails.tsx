@@ -43,7 +43,7 @@ const PlanetDetails = () => {
     return (
         <div className="card h-100">
             <div className="card-body">
-                <h5 className="card-title">{planet.name}</h5>
+                <h2 className="card-title">{planet.name}</h2>
                 <p className="card-text">Rotation Period: {planet.rotation_period}</p>
                 <p className="card-text">Orbital Period: {planet.orbital_period}</p>
                 <p className="card-text">Diameter: {planet.diameter}</p>
@@ -52,7 +52,9 @@ const PlanetDetails = () => {
                 <p className="card-text">Terrain: {planet.terrain}</p>
                 <p className="card-text">Surface Water: {planet.surface_water}</p>
                 <p className="card-text">Population: {planet.population}</p>
-                <h6 className="card-subtitle mb-2 text-muted">Residents:</h6>
+            </div>
+            <div className="card-footer">
+                <h4 className="card-subtitle mb-2 text-muted">Residents:</h4>
                 {planet.residents.map((resident) => (
                     <div className="card mb-2" key={resident.id}>
                         <div className="card-body">

@@ -54,7 +54,7 @@ const Vehicles: React.FC = () => {
         getVehicles(searchTerm, page);
     }, [page, searchTerm]);
 
-    const loadingMessage = searchTerm ? `Searching for ${searchTerm}...🚗` : `Searching for ${category}...🚗`;
+    const loadingMessage = searchTerm ? `Searching for ${searchTerm}...` : `Searching for ${category}...`;
 
     return (
         <Container>
@@ -62,7 +62,7 @@ const Vehicles: React.FC = () => {
             <SearchForm onSubmit={handleSearch} placeholder={`Search for a ${category}🚗`} />
             {error && <p>{error}</p>}
             {(loading || showLoadingMessage) && <p>{loadingMessage}</p>}
-            {!loading && !showLoadingMessage && vehicles.length === 0 && <h5>No {category} found 🚗</h5>}
+            {!loading && !showLoadingMessage && vehicles.length === 0 && <h5>No {category} found 🚶🏾‍♀️‍➡️</h5>}
             {!loading && !showLoadingMessage && vehicles.length > 0 && (
                 <Row>
                     {vehicles.map((vehicle, index) => (
@@ -73,7 +73,7 @@ const Vehicles: React.FC = () => {
                 </Row>
             )}
 
-            {totalPages > 1 && (
+            {!loading && !showLoadingMessage && totalPages > 1 && (
                 <Pagination
                     hasPreviousPage={page > 1}
                     hasNextPage={page < totalPages}
