@@ -76,6 +76,8 @@ const SpeciesDetails = () => {
                         </div>
                     </div>
                 ))}
+                <button className="btn btn-success mb-3 mt-3" onClick={() => window.history.back()}>Back</button>
+
             </div>
         </div>
     );

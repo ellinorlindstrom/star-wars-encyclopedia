@@ -9,7 +9,9 @@ const AppNavbar: FC<AppNavbarProps> = () => {
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
         <Navbar.Brand>
-          <Link to="/" className="title text-white text-decoration-none">
+          <Link 
+            to="/" 
+            className="pointer title text-white text-decoration-none">
             Star Wars Encyclopedia
           </Link>
         </Navbar.Brand>

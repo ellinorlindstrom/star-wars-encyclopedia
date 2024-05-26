@@ -1,3 +1,4 @@
+import './styles/App.scss';
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import AppNavbar from "./components/Navbar";
 import { Container } from "react-bootstrap";
@@ -7,6 +8,7 @@ import People from "./pages/People";
 import Planets from "./pages/Planets";
 import Species from "./pages/Species";
 import Starships from "./pages/Starships";
+import StartPage from "./pages/StartPage";
 import Vehicles from "./pages/Vehicles";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PeopleDetails from "./pages/PeopleDetails";
@@ -21,7 +23,8 @@ function App() {
       <AppNavbar />
       <Container className="mt-4">
       <Routes>
-        <Route path="/" element={<Navigate to="/films" />} />
+      <Route path="/" element={<Navigate to="/StartPage" />} />
+        <Route path="/StartPage" element={<StartPage />} />
         <Route path="/films" element={<Films />} />
           <Route path="/films/:id" element={<FilmDetail />} />
         <Route path="/people" element={<People/>} />

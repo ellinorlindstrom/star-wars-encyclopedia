@@ -109,6 +109,7 @@ const PeopleDetails = () => {
                 <Link to={`/planets/${person.homeworld.id}`} className="text-black text-decoration-none">{person.homeworld.name}</Link>
                 </div>
                 </div>
+                <button className="btn btn-success mb-3 mt-3" onClick={() => window.history.back()}>Back</button>
             </div>
         </div>
     );
