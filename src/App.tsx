@@ -16,6 +16,7 @@ import PlanetDetails from "./pages/PlanetDetails";
 import SpeciesDetails from "./pages/SpeciesDetails";
 import StarshipDetails from "./pages/StarshipsDetails";
 import VehicleDetails from "./pages/VehiclesDetails";
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
       <Container className="mt-4">
       <Routes>
       <Route path="/" element={<Navigate to="/StartPage" />} />
-        <Route path="/StartPage" element={<StartPage />} />
+        <Route path="/startpage" element={<StartPage />} />
         <Route path="/films" element={<Films />} />
           <Route path="/films/:id" element={<FilmDetail />} />
         <Route path="/people" element={<People/>} />
@@ -37,6 +38,7 @@ function App() {
           <Route path="/starship/:id" element={<StarshipDetails/>} /> 
         <Route path="/vehicles" element={<Vehicles/>} />
           <Route path="/vehicle/:id" element={<VehicleDetails/>} />
+          <Route path="*" element={<NotFoundPage />} />
       </Routes>
       </Container>
     </Router>

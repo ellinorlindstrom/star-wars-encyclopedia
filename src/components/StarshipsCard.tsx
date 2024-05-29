@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { StarshipInterface } from "../types/StarWarsApi.Types";
-import { Button } from 'react-bootstrap';
 
 const StarshipsCard = ({ starship }: { starship: StarshipInterface }) => {
     return (
@@ -12,9 +11,8 @@ const StarshipsCard = ({ starship }: { starship: StarshipInterface }) => {
             <p className="card-text">🌑 Crew: {starship.crew}</p>
         </div>
         <div className="card-footer mt-auto "> 
-        <Button variant="success">
-        <Link to={`/starship/${starship.id}`} className="text-white text-decoration-none">
-            Read more</Link></Button>
+        <Link to={`/starship/${starship.id}`} className="btn btn-success text-white text-decoration-none">
+            Read more</Link>
         </div>
     </div>
     );

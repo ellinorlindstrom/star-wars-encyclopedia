@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { VehicleInterface } from "../types/StarWarsApi.Types";
-import { Button } from 'react-bootstrap';
 
 const VehiclesCard = ({ vehicle }: { vehicle: VehicleInterface }) => {
     return (
@@ -12,9 +11,8 @@ const VehiclesCard = ({ vehicle }: { vehicle: VehicleInterface }) => {
             <p className="card-text">🌑 Crew: {vehicle.crew}</p>
         </div>
         <div className="card-footer mt-auto "> 
-        <Button variant="success">
-        <Link to={`/vehicle/${vehicle.id}`} className="text-white text-decoration-none">
-            Read more</Link></Button>
+        <Link to={`/vehicle/${vehicle.id}`} className="btn btn-success text-white text-decoration-none">
+            Read more</Link>
         </div>
     </div>
     );

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { Link } from 'react-router-dom';
 
 interface SearchFormProps {
     onSubmit: (search: string) => void;
@@ -29,11 +29,15 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSubmit, placeholder }) => {
                 />
             </Form.Group>
             <div className="d-flex justify-content-end">
-                <Button variant="success" type="submit">
-                    Submit
-                </Button>
+                <Link 
+                    to={`?search=${searchInput}`} 
+                    className="btn btn-dark text-white text-decoration-none"
+                    >
+                    Search
+                </Link>
             </div>
         </Form>
+        
     );
 };
 

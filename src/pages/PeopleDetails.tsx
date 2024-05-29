@@ -42,9 +42,9 @@ const PeopleDetails = () => {
 
     return (
         <div className="card h-100">
-            <div className="card-body">
+        <div className="card-body d-flex justify-content-between">
+            <div className="flex-grow-1 me-5">
                 <h2 className="card-title">{person.name}</h2>
-                <img src={person.image_url} alt={person.name} className="img-fluid mb-3" style={{ width: '300px', height: 'auto', display: 'inline', margin: '0 auto' }}  />
                 <p className="card-subtitle mb-2 text-muted">Birth year: {person.birth_year}</p>
                 <p className="card-text">Eye color: {person.eye_color}</p>
                 <p className="card-text">Hair color: {person.hair_color}</p>
@@ -54,6 +54,15 @@ const PeopleDetails = () => {
                 <p className="card-text">Wiki link: <a href={person.wiki_link} target="_blank" rel="noopener noreferrer">{person.wiki_link}</a></p>
                 <p className="card-text">Affiliations: {person.affiliations.join(', ')}</p>
             </div>
+            <div>
+                <img 
+                    src={person.image_url} 
+                    alt={person.name} 
+                    className="img-fluid mb-3" 
+                    style={{ width: '600px', height: 'auto' }}  
+                />
+            </div>
+        </div>
             <div className="card-footer">
                 <h4 className="card-subtitle mb-2 text-muted">Films</h4>
                 {person.films.map((film) => (
