@@ -23,12 +23,12 @@ const FilmCard: React.FC<FilmCardProps> = ({ films }) => {
               <p className="card-text">📅 Released {film.release_date}</p>
             </div>
             <div className="card-footer mt-auto ">
-                <Link
-                  to={`/films/${film.id}`}
-                  className="btn btn-success text-white text-decoration-none"
-                >
-                  Read more
-                </Link>
+              <Link
+                to={`/films/${film.id}`}
+                className="btn btn-success text-white text-decoration-none"
+              >
+                Read more
+              </Link>
             </div>
           </div>
         </Col>

@@ -1,58 +1,11 @@
 @import "bootstrap/scss/bootstrap";
 
-// Path: src/styles/App.scss
-
-@font-face {
-  font-family: 'Star Jedi';
-  src: url(/src/assets/fonts/star-jedi/starjedi/Starjedi.ttf) format('truetype');
+.img-size {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
 }
 
 body {
-  background-image: url(src/assets/images/space.jpg); 
-  background-size: cover;
-  color: #ffffff;
-  font-family: 'Star Jedi', Arial, sans-serif; 
+  background-color: #f8f9fa;
 }
-
-.text-center {
-  text-align: center;
-  margin-top: 20%;
-}
-
-.btn-jedi {
-  background-color: #ffcc00;
-  border: none;
-  color: black;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-size: 1.2em;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.btn-jedi:hover {
-  background-color: #ffdd44;
-}
-
-body {
- 
-  background-size: cover;
-}
-
-
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .img-size {
-    width: 100%;
-    height: 400px; 
-  }  
-  
-
-
-
