@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
       </h1>
       <h2 className="text-center">Explore the Galaxy Far, Far Away</h2>
       <div className="soldier"></div>
-      <h4>
+      <h4 className="text-center">
         And yes, that stormtrooper is indeed moonwalking. Because in our galaxy,
         even the Empire likes to have a little fun.
       </h4>
