@@ -8,7 +8,7 @@ import AppNavbar from "./components/Navbar";
 import { Container } from "react-bootstrap";
 import Films from "./pages/Films";
 import FilmDetail from "./pages/FilmDetails";
-import HomePage from "./pages/NotFoundPage";
+import HomePage from "./pages/HomePage";
 import People from "./pages/People";
 import Planets from "./pages/Planets";
 import Species from "./pages/Species";
@@ -20,7 +20,7 @@ import PlanetDetails from "./pages/PlanetDetails";
 import SpeciesDetails from "./pages/SpeciesDetails";
 import StarshipDetails from "./pages/StarshipsDetails";
 import VehicleDetails from "./pages/VehiclesDetails";
-import NotFoundPage from "./pages/HomePage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (

@@ -11,14 +11,14 @@ const AppNavbar: FC<AppNavbarProps> = () => {
         <Navbar.Brand>
           <Link
             to="/"
-            className="pointer title text-white text-decoration-none"
+            className="pointer title text-white text-decoration-none "
           >
             Star Wars Encyclopedia
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="ms-auto">
             <Nav.Link as={Link} to="/films">
               Films
             </Nav.Link>

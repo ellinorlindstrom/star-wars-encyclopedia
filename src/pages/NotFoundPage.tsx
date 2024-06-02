@@ -187,7 +187,7 @@ const DivWithSvg = () => (
   </div>
 );
 
-const HomePage = () => (
+const NotFoundPage = () => (
   <div id="wrapper">
     <h1 className="press-start-2p-regular">Four, Oh! Four</h1>
     <h2> Page not found just like the rest of R2D2:s body!</h2>
@@ -210,4 +210,4 @@ const HomePage = () => (
   </div>
 );
 
-export default HomePage;
+export default NotFoundPage;

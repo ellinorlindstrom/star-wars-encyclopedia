@@ -124,9 +124,6 @@ p {
   transform: translate3d(-34.5px, -178px, 0px) rotate(180deg) rotateX(-78.75deg);
 }
 
-.opposite1 {
-}
-
 .opposite2 {
   -webkit-transform: translate3d(0px, 0px, 0px) rotate(30deg);
   -moz-transform: translate3d(0px, 0px, 0px) rotate(30deg);
@@ -226,10 +223,6 @@ p {
     scale3d(0.31, 0.31, 0.31);
   transform: translate3d(45px, 50px, 36.6px) rotate(0deg) rotateX(180deg)
     scale3d(0.31, 0.31, 0.31);
-}
-
-/* /!\ You need to add vendor prefixes in order to render the CSS properly (or simply use https://leaverou.github.io/prefixfree/) /!\ */
-#tridiv {
 }
 
 .face {
@@ -1610,8 +1603,7 @@ svg polygon {
     rotateX(180deg) scale3d(0.26, 0.2, 0.24);
 }
 
-.arm-pri-1 .lt .face {
-}
+
 
 .arm-pri-2 {
   opacity: 1;
