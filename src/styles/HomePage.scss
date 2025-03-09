@@ -46,10 +46,6 @@ $c6: #6b657e;
   animation: $prop;
 }
 
-body {
-  @include animation(bg 10s linear infinite);
-}
-
 .soldier {
   position: absolute;
   bottom: 0;
