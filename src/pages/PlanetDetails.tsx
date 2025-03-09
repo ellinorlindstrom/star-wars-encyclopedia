@@ -14,7 +14,6 @@ const PlanetDetails = () => {
     try {
       setLoading(true);
       setError(null);
-      console.log(`Fetching planet data for ID: ${id}`);
       const data = await fetchPlanet(id);
       setPlanet(data);
     } catch (error) {
@@ -27,10 +26,8 @@ const PlanetDetails = () => {
   useEffect(() => {
     if (planetid) {
       getPlanet(planetid);
-      console.log("Planet ID:", planetid);
     } else {
       setError("Invalid planet ID.");
-      console.log("Invalid planet ID:", planetid);
       setLoading(false);
     }
   }, [planetid]);

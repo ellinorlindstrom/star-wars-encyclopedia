@@ -14,7 +14,6 @@ const SpeciesDetails = () => {
     try {
       setLoading(true);
       setError(null);
-      console.log(`Fetching species data for ID: ${id}`);
       const data = await fetchSpecies(id);
       setSpecies(data);
     } catch (error) {
@@ -27,10 +26,8 @@ const SpeciesDetails = () => {
   useEffect(() => {
     if (speciesid) {
       getSpecies(speciesid);
-      console.log("Species ID:", speciesid);
     } else {
       setError("Invalid species ID.");
-      console.log("Invalid species ID:", speciesid);
       setLoading(false);
     }
   }, [speciesid]);

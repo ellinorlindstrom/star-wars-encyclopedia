@@ -14,7 +14,6 @@ const VehicleDetails = () => {
     try {
       setLoading(true);
       setError(null);
-      console.log(`Fetching vehicle data for ID: ${id}`);
       const data = await fetchVehicle(id);
       setVehicle(data);
     } catch (error) {
@@ -27,10 +26,8 @@ const VehicleDetails = () => {
   useEffect(() => {
     if (vehicleid) {
       getVehicle(vehicleid);
-      console.log("Vehicle ID:", vehicleid);
     } else {
       setError("Invalid vehicle ID.");
-      console.log("Invalid vehicle ID:", vehicleid);
       setLoading(false);
     }
   }, [vehicleid]);

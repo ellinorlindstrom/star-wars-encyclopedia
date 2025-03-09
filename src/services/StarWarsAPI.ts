@@ -24,9 +24,7 @@ const instance = axios.create({
 });
 
 const get = async <T>(endpoint: string, params?: object): Promise<T> => {
-  console.log("Endpoint:", endpoint);
   const response = await instance.get<T>(endpoint, { params });
-  console.log("Response:", response);
   return response.data;
 };
 
@@ -51,7 +49,6 @@ export const getPeople = async (search: string, page: number) => {
 };
 
 export const getPerson = async (id: number) => {
-  console.log("ID:", id);
   return get<PeopleDetailsInterface>(`people/${id}/`);
 };
 

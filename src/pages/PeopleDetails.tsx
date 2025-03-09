@@ -14,7 +14,6 @@ const PeopleDetails = () => {
     try {
       setLoading(true);
       setError(null);
-      console.log(`Fetching person data for ID: ${id}`);
       const data = await fetchPerson(id);
       setPerson(data);
     } catch (error) {
@@ -27,10 +26,8 @@ const PeopleDetails = () => {
   useEffect(() => {
     if (personId) {
       getPerson(personId);
-      console.log("Person ID:", personId);
     } else {
       setError("Invalid person ID.");
-      console.log("Invalid person ID:", personId);
       setLoading(false);
     }
   }, [personId]);
