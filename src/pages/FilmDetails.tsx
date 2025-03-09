@@ -14,7 +14,6 @@ const FilmDetail = () => {
     try {
       setLoading(true);
       setError(null);
-      console.log(`Fetching film data for ID: ${id}`);
       const data = await fetchFilm(id);
       setFilm(data);
     } catch (error) {

@@ -16,7 +16,6 @@ const StarshipDetails = () => {
     try {
       setLoading(true);
       setError(null);
-      console.log(`Fetching starship data for ID: ${id}`);
       const data = await fetchStarship(id);
       setStarship(data);
     } catch (error) {
@@ -29,10 +28,8 @@ const StarshipDetails = () => {
   useEffect(() => {
     if (starshipid) {
       getStarship(starshipid);
-      console.log("Starship ID:", starshipid);
     } else {
       setError("Invalid starship ID.");
-      console.log("Invalid starship ID:", starshipid);
       setLoading(false);
     }
   }, [starshipid]);

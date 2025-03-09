@@ -7,7 +7,6 @@ interface FilmCardProps {
 }
 
 const FilmCard: React.FC<FilmCardProps> = ({ films }) => {
-  console.log("Film:", films);
   return (
     <Row>
       {films?.map((film) => (
