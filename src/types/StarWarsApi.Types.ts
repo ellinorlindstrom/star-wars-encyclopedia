@@ -1,7 +1,28 @@
+export interface Entity {
+    id: number;
+    name: string;
+}
 
-export interface FilmInterface {
+export interface Film {
     id: number;
     title: string;
+}
+
+export interface Person extends Entity {
+    birth_year: string;
+    eye_color: string;
+    hair_color: string;
+    height: string;
+    mass: string;
+    skin_color: string;
+    wiki_link: string;
+    image_url: string;
+    affiliations: string[];
+    created: string;
+    edited: string;
+}
+
+export interface FilmInterface extends Film {
     episode_id: number;
     opening_crawl: string;
     director: string;
@@ -17,96 +38,30 @@ export interface FilmInterface {
     species_count: number;
 }
 
-export interface FilmDetailsInterface {
-    id: number;
-    title: string;
-    episode_id: number;
-    opening_crawl: string;
-    director: string;
-    producer: string;
-    release_date: string;
-    image_url: string;
-    created: string;
-    edited: string;
-    characters: {
-        id: number;
-        name: string;
-    }[]
+export interface FilmDetailsInterface extends FilmInterface {
+    characters: Entity[];
     planets: PlanetInterface[];
-    starships: {
-        id: number;
-        name: string;
-    }[];
-    vehicles: {
-        id: number;
-        name: string;
-    }[];
-    species: {
-        id: number;
-        name: string;
-    }[];
+    starships: Entity[];
+    vehicles: Entity[];
+    species: Entity[];
 }
 
-export interface PeopleInterface {
-    id: number;
-    name: string;
-    birth_year: string;
-    eye_color: string;
-    hair_color: string;
-    height: string;
-    mass: string;
-    skin_color: string;
-    wiki_link: string;
-    image_url: string;
-    affiliations: string[];
-    created: string;
-    edited: string;
+export interface PeopleInterface extends Person {
     films_count: number;
     species_count: number;
     starships_count: number;
     vehicles_count: number;
-    homeworld: {
-        id: number;
-        name: string;
-    };
+    homeworld: Entity;
 }
 
-export interface PeopleDetailsInterface {
-    id: number;
-    name: string;
-    birth_year: string;
-    eye_color: string;
-    hair_color: string;
-    height: string;
-    mass: string;
-    skin_color: string;
-    wiki_link: string;
-    image_url: string;
-    affiliations: string[];
-    created: string;
-    edited: string;
-    films: FilmInterface[];
-    starships: {
-        id: number;
-        name: string;
-    }[];
-    vehicles: {
-        id: number;
-        name: string;
-    }[];
-    species: {
-        id: number;
-        name: string;
-    }[];
-    homeworld: {
-        id: number;
-        name: string;
-    };
+export interface PeopleDetailsInterface extends PeopleInterface {
+    films: Film[];
+    starships: Entity[];
+    vehicles: Entity[];
+    species: Entity[];
 }
 
-export interface PlanetInterface {
-    id: number;
-    name: string;
+export interface PlanetInterface extends Entity {
     diameter: string;
     rotation_period: string;
     orbital_period: string;
@@ -121,47 +76,14 @@ export interface PlanetInterface {
     edited: string;
     films_count: number;
     residents_count: number;
-    residents: ResidentInterface[];
+    residents: Person[];
 }
 
-export interface ResidentInterface {
-    id: number;
-    name: string;
-    birth_year: string;
-    eye_color: string;
-    hair_color: string;
-    height: string;
-    mass: string;
-    skin_color: string;
-    wiki_link: string;
-    image_url: string;
-    affiliations: string[];
-    created: string;
-    edited: string;
+export interface PlanetDetailsInterface extends PlanetInterface {
+    residents: Person[];
 }
 
-export interface PlanetDetailsInterface {
-    id: number;
-    name: string;
-    rotation_period: string;
-    orbital_period: string;
-    diameter: string;
-    climate: string;
-    gravity: string;
-    terrain: string;
-    surface_water: string;
-    population: string;
-    created: string;
-    edited: string;
-    residents: {
-        id: number;
-        name: string;
-    }[];
-    }
-
-export interface SpeciesInterface {
-    id: number;
-    name: string;
+export interface SpeciesInterface extends Entity {
     classification: string;
     designation: string;
     average_height: string;
@@ -174,42 +96,15 @@ export interface SpeciesInterface {
     edited: string;
     people_count: number;
     films_count: number;
-    homeworld: {
-        id: number;
-        name: string;
-    };
+    homeworld: Entity;
 }
 
-export interface SpeciesDetailsInterface {
-    id: number;
-    name: string;
-    classification: string;
-    designation: string;
-    average_height: string;
-    average_lifespan: string;
-    eye_colors: string;
-    hair_colors: string;
-    skin_colors: string;
-    language: string;
-    created: string;
-    edited: string;
-    people: {
-        id: number;
-        name: string;
-    }[];
-    homeworld: {
-        id: number;
-        name: string;
-    };
-    films: {
-        id: number;
-        title: string;
-    }[];
+export interface SpeciesDetailsInterface extends SpeciesInterface {
+    people: Entity[];
+    films: Film[];
 }
 
-export interface StarshipInterface {
-    id: number;
-    name: string;
+export interface StarshipInterface extends Entity {
     model: string;
     starship_class: string;
     manufacturer: string;
@@ -228,36 +123,12 @@ export interface StarshipInterface {
     films_count: number;
 }
 
-export interface StarshipDetailsInterface {
-    id: number;
-    name: string;
-    model: string;
-    starship_class: string;
-    manufacturer: string;
-    cost_in_credits: string;
-    length: string;
-    crew: string;
-    passengers: string;
-    max_atmosphering_speed: string;
-    hyperdrive_rating: string;
-    MGLT: string;
-    cargo_capacity: string;
-    consumables: string;
-    created: string;
-    edited: string;
-    pilots: {
-        id: number;
-        name: string;
-    }[];
-    films: {
-        id: number;
-        title: string;
-    }[];
+export interface StarshipDetailsInterface extends StarshipInterface {
+    pilots: Entity[];
+    films: Film[];
 }
 
-export interface VehicleInterface {
-    id: number;
-    name: string;
+export interface VehicleInterface extends Entity {
     model: string;
     vehicle_class: string;
     manufacturer: string;
@@ -274,27 +145,7 @@ export interface VehicleInterface {
     films_count: number;
 }
 
-export interface VehicleDetailsInterface {
-    id: number;
-    name: string;
-    model: string;
-    vehicle_class: string;
-    manufacturer: string;
-    length: string;
-    cost_in_credits: string;
-    crew: string;
-    passengers: string;
-    max_atmosphering_speed: string;
-    cargo_capacity: string;
-    consumables: string;
-    created: string;
-    edited: string;
-    pilots: {
-        id: number;
-        name: string;
-    }[];
-    films: {
-        id: number;
-        title: string;
-    }[];
+export interface VehicleDetailsInterface extends VehicleInterface {
+    pilots: Entity[];
+    films: Film[];
 }
