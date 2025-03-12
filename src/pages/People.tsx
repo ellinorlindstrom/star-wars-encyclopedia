@@ -64,7 +64,7 @@ const People: React.FC = () => {
       </h1>
       <SearchForm
         onSubmit={handleSearch}
-        placeholder={`Search for a ${category}🕺`}
+        placeholder={`Search for a ${category}`}
       />
       {error && <p>{error}</p>}
       {(loading || showLoadingMessage) && (

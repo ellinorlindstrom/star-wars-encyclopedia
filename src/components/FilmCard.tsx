@@ -10,7 +10,7 @@ const FilmCard: React.FC<FilmCardProps> = ({ films }) => {
   return (
     <Row>
       {films?.map((film) => (
-        <Col sm={12} md={6} lg={4} key={film.id} className="mb-4">
+        <Col sm={12} md={6} lg={3} key={film.id} className="mb-4">
           <div className="card h-100">
             <div className="card-body flex-grow-1">
               <h5 className="card-title">{film.title}</h5>
