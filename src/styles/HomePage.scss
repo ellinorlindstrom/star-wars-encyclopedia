@@ -1,5 +1,10 @@
+@font-face {
+  font-family: "starjedi";
+  src: url(src/assets/fonts/star_jedi/starjedi/Starjedi.ttf) format("truetype");
+}
+
 .press-start-2p-regular {
-  font-family: "Press Start 2P", system-ui;
+  font-family: "starjedi", system-ui;
   font-weight: 400;
   font-style: normal;
 }
@@ -13,6 +18,20 @@
   font-size: 1em;
   font-weight: bold;
   text-decoration: none;
+}
+
+.button-homepage {
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  display: block;
+  margin: 2em auto;
+  padding: 0.5em 2em;
+  border: none;
+  border-radius: 0.5em;
+  font-family: sans-serif;
 }
 
 $p: 8px;
