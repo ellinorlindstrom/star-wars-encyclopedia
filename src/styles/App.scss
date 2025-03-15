@@ -9,3 +9,18 @@
 body {
   background-color: #f8f9fa;
 }
+
+.black-button {
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  display: block;
+  margin: 2em auto;
+  padding: 0.5em 2em;
+  border: none;
+  border-radius: 0.5em;
+  font-family: sans-serif;
+  text-align: center;
+}

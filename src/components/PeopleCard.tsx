@@ -15,7 +15,7 @@ const PeopleCard = ({ person }: { person: PeopleInterface }) => {
       <div className="card-footer mt-auto ">
         <Link
           to={`/people/${person.id}`}
-          className="btn btn-success text-white text-decoration-none"
+          className="black-button"
         >
           Read more
         </Link>

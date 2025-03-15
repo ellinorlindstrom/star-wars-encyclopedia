@@ -13,7 +13,7 @@ const StarshipsCard = ({ starship }: { starship: StarshipInterface }) => {
       <div className="card-footer mt-auto ">
         <Link
           to={`/starship/${starship.id}`}
-          className="btn btn-success text-white text-decoration-none"
+          className="black-button"
         >
           Read more
         </Link>

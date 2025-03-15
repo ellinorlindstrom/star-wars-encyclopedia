@@ -13,7 +13,7 @@ const SpeciesCard = ({ species }: { species: SpeciesInterface }) => {
       <div className="card-footer mt-auto ">
         <Link
           to={`/species/${species.id}`}
-          className="btn btn-success text-white text-decoration-none"
+          className="black-button"
         >
           Read more
         </Link>

@@ -13,7 +13,7 @@ const VehiclesCard = ({ vehicle }: { vehicle: VehicleInterface }) => {
       <div className="card-footer mt-auto ">
         <Link
           to={`/vehicle/${vehicle.id}`}
-          className="btn btn-success text-white text-decoration-none"
+          className="black-button"
         >
           Read more
         </Link>

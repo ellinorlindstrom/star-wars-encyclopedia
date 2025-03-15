@@ -24,7 +24,7 @@ const FilmCard: React.FC<FilmCardProps> = ({ films }) => {
             <div className="card-footer mt-auto ">
               <Link
                 to={`/films/${film.id}`}
-                className="btn btn-success text-white text-decoration-none"
+                className="black-button"
               >
                 Read more
               </Link>

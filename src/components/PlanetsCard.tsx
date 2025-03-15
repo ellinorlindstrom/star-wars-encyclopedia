@@ -13,7 +13,7 @@ const PlanetsCard = ({ planet }: { planet: PlanetInterface }) => {
       <div className="card-footer mt-auto ">
         <Link
           to={`/planets/${planet.id}`}
-          className="btn btn-success text-white text-decoration-none"
+          className="black-button"
         >
           Read more
         </Link>

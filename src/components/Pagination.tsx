@@ -18,7 +18,7 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
 }) => {
   return (
-    <div className="mb-5 mt-3 d-flex justify-content-between">
+    <div className="mb-5 mt-3 d-flex flex-column flex-md-row justify-content-between align-items-center">
       <Link
         to={`?page=${page - 1}`}
         onClick={(e) => {
@@ -27,11 +27,11 @@ const Pagination: React.FC<PaginationProps> = ({
             onPrevious();
           }
         }}
-        className={`btn btn-dark ${!hasPreviousPage ? "disabled" : ""}`}
+        className={`black-button ${!hasPreviousPage ? "disabled" : ""}`}
       >
         Previous
       </Link>
-      <p>
+      <p className="mb-0">
         Page {page} of {totalPages}
       </p>
 
@@ -43,7 +43,7 @@ const Pagination: React.FC<PaginationProps> = ({
             onNext();
           }
         }}
-        className={`btn btn-dark ${!hasNextPage ? "disabled" : ""}`}
+        className={`black-button ${!hasNextPage ? "disabled" : ""}`}
       >
         Next
       </Link>

@@ -65,7 +65,7 @@ const PlanetDetails = () => {
           </div>
         ))}
         <button
-          className="btn btn-success mb-3 mt-3"
+          className="black-button"
           onClick={() => window.history.back()}
         >
           Back
