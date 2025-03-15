@@ -12,9 +12,12 @@ const HomePage: React.FC = () => {
   return (
     <>
     <div className="homepage-content">
-      <h1 className="press-start-2p-regular text-center">
+      <h1 className="homepage-title">
       Welcome to the Galactic Encyclopedia
       </h1>
+      <p className="homepage-description">
+      Explore random place in the Star Wars universe
+      </p>
       <button className="black-button" onClick={handleRandomNavigation}>EXPLORE</button>
       </div>
       <div className="soldier"></div>

@@ -3,15 +3,15 @@
   src: url(src/assets/fonts/star_jedi/starjedi/Starjedi.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: "starjout";
+  src: url(src/assets/fonts/star_jedi/starjout/Starjout.ttf) format("woff");
+}
+
 .press-start-2p-regular {
   font-family: "starjedi", system-ui;
   font-weight: 400;
   font-style: normal;
-}
-
-.text-center {
-  text-align: center;
-  margin-top: 2em;
 }
 
 .btn-jedi {
@@ -20,12 +20,18 @@
   text-decoration: none;
 }
 
+.homepage-title {
+  font-family: "starjout";
+
+}
+
 .homepage-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   align-items: center;
-  height: 80vh;
+  height: 50vh;
 }
 
 $p: 8px;

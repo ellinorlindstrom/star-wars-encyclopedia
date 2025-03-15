@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 import { FC } from "react";
 import { Link } from "react-router-dom";
 
@@ -7,38 +7,43 @@ interface AppNavbarProps {}
 const AppNavbar: FC<AppNavbarProps> = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
-      <Container>
-        <Navbar.Brand>
-          <Link
-            to="/"
-            className="pointer title text-white text-decoration-none "
-          >
-            Star Wars Encyclopedia
-          </Link>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/films">
-              Films
-            </Nav.Link>
-            <Nav.Link as={Link} to="/people">
-              People
-            </Nav.Link>
-            <Nav.Link as={Link} to="/planets">
-              Planets
-            </Nav.Link>
-            <Nav.Link as={Link} to="/species">
-              Species
-            </Nav.Link>
-            <Nav.Link as={Link} to="/starships">
-              Starships
-            </Nav.Link>
-            <Nav.Link as={Link} to="/vehicles">
-              Vehicles
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
+      <Container className="flex-column">
+        <Row className="justify-content-center w-100">
+          <Col className="text-center">
+            <Navbar.Brand>
+              <Link to="/" className="site-title">
+                STAR WARS
+              </Link>
+            </Navbar.Brand>
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col className="text-center">
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="justify-content-center w-100">
+                <Nav.Link as={Link} to="/films">
+                  FILMS
+                </Nav.Link>
+                <Nav.Link as={Link} to="/people">
+                  PEOPLE
+                </Nav.Link>
+                <Nav.Link as={Link} to="/planets">
+                  PLANETS
+                </Nav.Link>
+                <Nav.Link as={Link} to="/species">
+                  SPECIES
+                </Nav.Link>
+                <Nav.Link as={Link} to="/starships">
+                  STARSHIPS
+                </Nav.Link>
+                <Nav.Link as={Link} to="/vehicles">
+                  VEHICLES
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Col>
+        </Row>
       </Container>
     </Navbar>
   );
