@@ -11,11 +11,8 @@ const VehiclesCard = ({ vehicle }: { vehicle: VehicleInterface }) => {
         <p className="card-text">🌑 Crew: {vehicle.crew}</p>
       </div>
       <div className="card-footer mt-auto ">
-        <Link
-          to={`/vehicle/${vehicle.id}`}
-          className="black-button"
-        >
-          Read more
+        <Link to={`/vehicle/${vehicle.id}`} className="black-button">
+          READ MORE
         </Link>
       </div>
     </div>

@@ -189,15 +189,17 @@ const DivWithSvg = () => (
 
 const NotFoundPage = () => (
   <div id="wrapper">
-    <h1 className="press-start-2p-regular">Four, Oh! Four</h1>
-    <h2> Page not found just like the rest of R2D2:s body!</h2>
-    <p className="lead">
-      Use the Force to go{" "}
-      <Link className="btn-jedi" to="/">
-        Home
-      </Link>
-      .
-    </p>
+    <div className="not-found-content">
+      <h1 className="press-start-2p-regular">404</h1>
+      <p> Page not found just like the rest of R2D2:s body!</p>
+      <p className="lead">
+        Use the Force to go{" "}
+        <Link className="btn-jedi" to="/">
+          Home
+        </Link>
+        .
+      </p>
+    </div>
     <div id="outline" className="centering">
       <div className="base">
         <div id="tridiv">

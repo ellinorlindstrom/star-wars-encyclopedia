@@ -19,14 +19,10 @@ const FilmCard: React.FC<FilmCardProps> = ({ films }) => {
                 alt={film.title}
                 className="img-size mb-3"
               />
-              <p className="card-text">📅 {film.release_date}</p>
             </div>
             <div className="card-footer mt-auto ">
-              <Link
-                to={`/films/${film.id}`}
-                className="black-button"
-              >
-                Read more
+              <Link to={`/films/${film.id}`} className="black-button">
+                READ MORE
               </Link>
             </div>
           </div>

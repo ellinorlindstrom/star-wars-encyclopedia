@@ -11,11 +11,8 @@ const StarshipsCard = ({ starship }: { starship: StarshipInterface }) => {
         <p className="card-text">🌑 Crew: {starship.crew}</p>
       </div>
       <div className="card-footer mt-auto ">
-        <Link
-          to={`/starship/${starship.id}`}
-          className="black-button"
-        >
-          Read more
+        <Link to={`/starship/${starship.id}`} className="black-button">
+          READ MORE
         </Link>
       </div>
     </div>

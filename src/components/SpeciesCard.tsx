@@ -11,11 +11,8 @@ const SpeciesCard = ({ species }: { species: SpeciesInterface }) => {
         <p className="card-text">🌑 Language: {species.language}</p>
       </div>
       <div className="card-footer mt-auto ">
-        <Link
-          to={`/species/${species.id}`}
-          className="black-button"
-        >
-          Read more
+        <Link to={`/species/${species.id}`} className="black-button">
+          READ MORE
         </Link>
       </div>
     </div>

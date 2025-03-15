@@ -11,11 +11,8 @@ const PlanetsCard = ({ planet }: { planet: PlanetInterface }) => {
         <p className="card-text">🌑 Terrain: {planet.terrain}</p>
       </div>
       <div className="card-footer mt-auto ">
-        <Link
-          to={`/planets/${planet.id}`}
-          className="black-button"
-        >
-          Read more
+        <Link to={`/planets/${planet.id}`} className="black-button">
+          READ MORE
         </Link>
       </div>
     </div>
