@@ -19,7 +19,7 @@ const FilmCard: React.FC<FilmCardProps> = ({ films }) => {
                 alt={film.title}
                 className="img-size mb-3"
               />
-              <p className="card-text">📅 Released {film.release_date}</p>
+              <p className="card-text">📅 {film.release_date}</p>
             </div>
             <div className="card-footer mt-auto ">
               <Link
